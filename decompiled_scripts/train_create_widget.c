@@ -21,31 +21,31 @@ void __EntryFunction__()
 	}
 	VEHICLE::SET_RANDOM_TRAINS(false);
 	VEHICLE::DELETE_ALL_TRAINS();
-	if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+	if (!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()))
 	{
-		ENTITY::SET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 626.68f, 6442.31f, 30.88f, true, false, false, true);
-		ENTITY::SET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID(), -177f);
-		CAM::SET_GAMEPLAY_CAM_RELATIVE_HEADING(0f);
+		unk_0x03D382CB0B44E2FC(unk_0x9B0761B4C3EB8BC7(), 626.68f, 6442.31f, 30.88f, 1, 0, 0, 1);
+		ENTITY::SET_ENTITY_HEADING(unk_0x9B0761B4C3EB8BC7(), -177f);
+		unk_0x4C4FC7841A5FB983(0);
 	}
-	STREAMING::REQUEST_MODEL(joaat("freight"));
-	STREAMING::REQUEST_MODEL(joaat("freightcar"));
-	STREAMING::REQUEST_MODEL(joaat("freightgrain"));
-	STREAMING::REQUEST_MODEL(joaat("freightcont1"));
-	STREAMING::REQUEST_MODEL(joaat("freightcont2"));
-	STREAMING::REQUEST_MODEL(joaat("tankercar"));
-	STREAMING::REQUEST_MODEL(joaat("metrotrain"));
-	while ((((((!STREAMING::HAS_MODEL_LOADED(joaat("freight")) || !STREAMING::HAS_MODEL_LOADED(joaat("freightcar"))) || !STREAMING::HAS_MODEL_LOADED(joaat("freightgrain"))) || !STREAMING::HAS_MODEL_LOADED(joaat("freightcont1"))) || !STREAMING::HAS_MODEL_LOADED(joaat("freightcont2"))) || !STREAMING::HAS_MODEL_LOADED(joaat("tankercar"))) || !STREAMING::HAS_MODEL_LOADED(joaat("metrotrain")))
+	unk_0x78FCB2E22C41B9D5(joaat("freight"));
+	unk_0x78FCB2E22C41B9D5(joaat("freightcar"));
+	unk_0x78FCB2E22C41B9D5(joaat("freightgrain"));
+	unk_0x78FCB2E22C41B9D5(joaat("freightcont1"));
+	unk_0x78FCB2E22C41B9D5(joaat("freightcont2"));
+	unk_0x78FCB2E22C41B9D5(joaat("tankercar"));
+	unk_0x78FCB2E22C41B9D5(joaat("metrotrain"));
+	while ((((((!ENTITY::DOES_ENTITY_EXIST(joaat("freight")) || !ENTITY::DOES_ENTITY_EXIST(joaat("freightcar"))) || !ENTITY::DOES_ENTITY_EXIST(joaat("freightgrain"))) || !ENTITY::DOES_ENTITY_EXIST(joaat("freightcont1"))) || !ENTITY::DOES_ENTITY_EXIST(joaat("freightcont2"))) || !ENTITY::DOES_ENTITY_EXIST(joaat("tankercar"))) || !ENTITY::DOES_ENTITY_EXIST(joaat("metrotrain")))
 	{
 		SYSTEM::WAIT(0);
 	}
 	while (true)
 	{
 		SYSTEM::WAIT(0);
-		if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+		if (!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()))
 		{
 			if (iLocal_5)
 			{
-				if (ENTITY::DOES_ENTITY_EXIST(iLocal_0))
+				if (MISC::IS_BIT_SET(iLocal_0))
 				{
 					VEHICLE::DELETE_MISSION_TRAIN(&iLocal_0);
 				}
@@ -54,10 +54,10 @@ void __EntryFunction__()
 			}
 			if (iLocal_7)
 			{
-				Local_1 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+				Local_1 = { CAM::SET_WIDESCREEN_BORDERS() };
 				iLocal_7 = 0;
 			}
-			if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_0, false) && !ENTITY::IS_ENTITY_DEAD(iLocal_0, false))
+			if (ENTITY::GET_ENTITY_COORDS(iLocal_0, false) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_0, 0))
 			{
 				VEHICLE::SET_TRAIN_SPEED(iLocal_0, fLocal_3);
 				VEHICLE::SET_TRAIN_CRUISE_SPEED(iLocal_0, fLocal_3);
@@ -73,6 +73,6 @@ void __EntryFunction__()
 void func_1()
 {
 	VEHICLE::SET_RANDOM_TRAINS(true);
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

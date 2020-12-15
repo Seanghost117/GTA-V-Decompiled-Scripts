@@ -74,15 +74,15 @@ void __EntryFunction__()
 	iLocal_42 = 64;
 	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(3))
 	{
-		SCRIPT::TERMINATE_THIS_THREAD();
+		ENTITY::STOP_ENTITY_ANIM();
 	}
 	while (true)
 	{
-		if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+		if (!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()))
 		{
-			Global_111638.f_19958++;
+			Global_111858.f_19959++;
 			func_1();
-			SCRIPT::TERMINATE_THIS_THREAD();
+			ENTITY::STOP_ENTITY_ANIM();
 		}
 		SYSTEM::WAIT(0);
 	}
@@ -90,7 +90,7 @@ void __EntryFunction__()
 
 void func_1()
 {
-	func_2(&(Global_111638.f_19958.f_1), 2048);
+	func_2(&(Global_111858.f_19959.f_1), 2048);
 }
 
 void func_2(var uParam0, int iParam1)

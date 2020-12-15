@@ -105,7 +105,7 @@ void func_1()
 
 void func_2()
 {
-	NETWORK::NETWORK_SET_THIS_SCRIPT_IS_NETWORK_SCRIPT(32, false, -1);
+	NETWORK::NETWORK_REGISTER_PLAYER_BROADCAST_VARIABLES(32, 0, -1);
 	func_3(0, -1, 0);
 }
 
@@ -131,7 +131,7 @@ int func_3(int iParam0, int iParam1, bool bParam2)
 		{
 			if (iParam0 == 0)
 			{
-				if (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+				if (!MISC::SET_BIT())
 				{
 					if (!bParam2)
 					{
@@ -182,11 +182,11 @@ int func_3(int iParam0, int iParam1, bool bParam2)
 	}
 	if (iParam1 > -1)
 	{
-		Global_1312501 = iVar0;
+		Global_1312519 = iVar0;
 	}
 	if (iParam0 == 0)
 	{
-		if (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+		if (!MISC::SET_BIT())
 		{
 			if (!bParam2)
 			{
@@ -214,7 +214,7 @@ int func_3(int iParam0, int iParam1, bool bParam2)
 
 int func_4(int iParam0)
 {
-	if (SCRIPT::GET_EVENT_EXISTS(1, iParam0))
+	if (unk_0x16F1FCCC54559709(1, iParam0))
 	{
 		return 1;
 	}
@@ -223,16 +223,16 @@ int func_4(int iParam0)
 
 bool func_5()
 {
-	return Global_2450632.f_593;
+	return Global_2451787.f_691;
 }
 
 bool func_6()
 {
-	return Global_1312854;
+	return Global_1312872;
 }
 
 void func_7()
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

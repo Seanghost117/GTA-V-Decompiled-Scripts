@@ -29,7 +29,7 @@ void __EntryFunction__()
 	while (true)
 	{
 		SYSTEM::WAIT(0);
-		if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+		if (!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()))
 		{
 			if (bLocal_0)
 			{
@@ -50,6 +50,6 @@ void __EntryFunction__()
 void func_1()
 {
 	VEHICLE::SET_RANDOM_TRAINS(true);
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

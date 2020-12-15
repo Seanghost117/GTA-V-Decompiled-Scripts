@@ -57,7 +57,7 @@ void __EntryFunction__()
 	iLocal_11 = 12;
 	fLocal_14 = 0.001f;
 	iLocal_17 = -1;
-	if (Global_111638.f_10189.f_3854 == 0)
+	if (Global_111858.f_10190.f_3854 == 0)
 	{
 		func_10();
 	}
@@ -75,7 +75,7 @@ void __EntryFunction__()
 		switch (iLocal_18)
 		{
 			case 0:
-				if (CLOCK::GET_CLOCK_HOURS() == 3 && func_9())
+				if (CLOCK::GET_CLOCK_DAY_OF_MONTH() == 3 && func_9())
 				{
 					iLocal_18 = 1;
 				}
@@ -91,7 +91,7 @@ void __EntryFunction__()
 				break;
 			
 			case 2:
-				if (CLOCK::GET_CLOCK_HOURS() != 3 || !func_9())
+				if (CLOCK::GET_CLOCK_DAY_OF_MONTH() != 3 || !func_9())
 				{
 					func_10();
 				}
@@ -104,16 +104,16 @@ void func_1(int iParam0, int iParam1, int iParam2, bool bParam3, int iParam4)
 {
 	if (iParam0 != 198)
 	{
-		if (Global_76622)
+		if (Global_76833)
 		{
-			Global_2439138.f_75.f_227[iParam0] = iParam1;
+			Global_2440049.f_75.f_227[iParam0] = iParam1;
 		}
 		else
 		{
-			Global_111638.f_7256.f_227[iParam0] = iParam1;
+			Global_111858.f_7257.f_227[iParam0] = iParam1;
 		}
-		Global_38398[iParam0] = iParam2;
-		Global_38597[iParam0] = 1;
+		Global_38598[iParam0] = iParam2;
+		Global_38797[iParam0] = 1;
 		func_4(iParam0, bParam3, iParam4, 0);
 		func_2(iParam0, iParam1);
 	}
@@ -126,22 +126,22 @@ void func_2(int iParam0, int iParam1)
 		case 12:
 			if (iParam1 == 0)
 			{
-				AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("AZ_PORT_OF_LS_UNDERWATER_CREAKS", false, false);
+				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("AZ_PORT_OF_LS_UNDERWATER_CREAKS", false, false);
 			}
 			else
 			{
-				AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("AZ_PORT_OF_LS_UNDERWATER_CREAKS", true, false);
+				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("AZ_PORT_OF_LS_UNDERWATER_CREAKS", true, false);
 			}
 			break;
 		
 		case 71:
 			if (iParam1 != 1)
 			{
-				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("HEIST_SWEATSHOP_ZONES", false, false);
+				AUDIO::REMOVE_PORTAL_SETTINGS_OVERRIDE("HEIST_SWEATSHOP_ZONES", 0, 0);
 			}
 			else
 			{
-				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("HEIST_SWEATSHOP_ZONES", true, false);
+				AUDIO::REMOVE_PORTAL_SETTINGS_OVERRIDE("HEIST_SWEATSHOP_ZONES", 1, 0);
 			}
 			break;
 		
@@ -159,44 +159,44 @@ void func_2(int iParam0, int iParam1)
 		case 6:
 			if (iParam1 == 1)
 			{
-				AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("AZ_UNDERWATER_EXILE_01_PLANE_WRECK", true, false);
+				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("AZ_UNDERWATER_EXILE_01_PLANE_WRECK", true, false);
 			}
 			else
 			{
-				AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("AZ_UNDERWATER_EXILE_01_PLANE_WRECK", false, false);
+				AUDIO::SET_AMBIENT_ZONE_LIST_STATE_PERSISTENT("AZ_UNDERWATER_EXILE_01_PLANE_WRECK", false, false);
 			}
 			break;
 		
 		case 174:
 			if (iParam1 == 2)
 			{
-				AUDIO::REMOVE_PORTAL_SETTINGS_OVERRIDE("V_CARSHOWROOM_PS_WINDOW_UNBROKEN");
+				AUDIO::SET_STATIC_EMITTER_ENABLED("V_CARSHOWROOM_PS_WINDOW_UNBROKEN");
 			}
 			break;
 		
 		case 37:
 			if (iParam1 == 1)
 			{
-				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_STAGE_RADIO", false);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_01", false);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_02", false);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_03", false);
+				SCRIPT::GET_THIS_SCRIPT_NAME("TREVOR1_TRAILER_PARK_MAIN_STAGE_RADIO", 0);
+				SCRIPT::GET_THIS_SCRIPT_NAME("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_01", 0);
+				SCRIPT::GET_THIS_SCRIPT_NAME("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_02", 0);
+				SCRIPT::GET_THIS_SCRIPT_NAME("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_03", 0);
 			}
 			break;
 	}
 }
 
-void func_3(int iParam0, bool bParam1)
+void func_3(bool bParam0, bool bParam1)
 {
 	if (bParam1)
 	{
-		MISC::SET_BIT(&Global_110276, iParam0);
+		unk_0xBE20AB8238688965(&Global_110496, bParam0);
 	}
 	else
 	{
-		MISC::CLEAR_BIT(&Global_110276, iParam0);
+		VEHICLE::IS_VEHICLE_DRIVEABLE(&Global_110496, bParam0);
 	}
-	Global_110275 = 1;
+	Global_110495 = 1;
 }
 
 bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
@@ -209,7 +209,7 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 	bool bVar5;
 	int iVar6;
 	
-	Global_1652615 = 1;
+	Global_1654379 = 1;
 	bVar0 = false;
 	Var3.f_4 = 3;
 	Var3.f_8 = 3;
@@ -219,43 +219,43 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 	func_8(&Var3, iParam0);
 	if (func_5())
 	{
-		iVar1 = Global_111638.f_7256.f_227[iParam0];
+		iVar1 = Global_111858.f_7257.f_227[iParam0];
 	}
 	else
 	{
-		iVar1 = Global_2439138.f_75.f_227[iParam0];
+		iVar1 = Global_2440049.f_75.f_227[iParam0];
 	}
-	iVar2 = Global_38796[iParam0];
-	if (PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !bParam3)
+	iVar2 = Global_38996[iParam0];
+	if (STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()) && !bParam3)
 	{
-		Global_1652615 = 1;
+		Global_1654379 = 1;
 	}
 	else
 	{
 		bVar5 = true;
-		if (MISC::GET_HASH_KEY(SCRIPT::GET_THIS_SCRIPT_NAME()) != MISC::GET_HASH_KEY("standard_global_reg"))
+		if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(TASK::IS_PED_BEING_ARRESTED()) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("standard_global_reg"))
 		{
 			if (iParam2 == 0)
 			{
-				if (Global_38398[iParam0] && MISC::GET_DISTANCE_BETWEEN_COORDS(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false), Var3, true) < 200f)
+				if (Global_38598[iParam0] && HUD::SET_BLIP_NAME_FROM_TEXT_FILE(NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 0), Var3, 1) < 200f)
 				{
 					bVar5 = false;
-					Global_1652615 = 1;
+					Global_1654379 = 1;
 				}
-				if (!PLAYER::IS_PLAYER_PLAYING(PLAYER::PLAYER_ID()) || TASK::IS_PED_BEING_ARRESTED(PLAYER::PLAYER_PED_ID()))
+				if (!ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_ID()) || ENTITY::REMOVE_MODEL_HIDE(unk_0x9B0761B4C3EB8BC7()))
 				{
-					if (!CAM::IS_SCREEN_FADED_OUT())
+					if (!PED::REMOVE_SCENARIO_BLOCKING_AREA())
 					{
 						bVar5 = false;
-						Global_1652615 = 1;
+						Global_1654379 = 1;
 					}
 				}
 			}
 		}
-		if (STREAMING::IS_NEW_LOAD_SCENE_ACTIVE() && (!STREAMING::IS_PLAYER_SWITCH_IN_PROGRESS() || STREAMING::GET_PLAYER_SWITCH_STATE() != 5))
+		if (STREAMING::IS_NEW_LOAD_SCENE_ACTIVE() && (!LOCALIZATION::GET_CURRENT_LANGUAGE() || STREAMING::GET_PLAYER_SWITCH_STATE() != 5))
 		{
 			bVar5 = false;
-			Global_1652615 = 1;
+			Global_1654379 = 1;
 		}
 		if (bVar5)
 		{
@@ -269,13 +269,13 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 					{
 						if (Var3.f_4[iVar1] != 0)
 						{
-							ENTITY::REMOVE_MODEL_HIDE(Var3, 10f, Var3.f_4[iVar1], 0);
+							ENTITY::CREATE_MODEL_HIDE(Var3, 10f, Var3.f_4[iVar1], false);
 						}
 						if (Var3.f_4[iVar2] != 0)
 						{
-							ENTITY::CREATE_MODEL_HIDE(Var3, 10f, Var3.f_4[iVar2], true);
+							PLAYER::PLAYER_PED_ID(Var3, 10f, Var3.f_4[iVar2], 1);
 						}
-						Global_39992[iParam0] = 1;
+						Global_40192[iParam0] = 1;
 					}
 					bVar0 = true;
 					break;
@@ -283,63 +283,63 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 				case 1:
 					if (iVar1 == 0)
 					{
-						if (MISC::GET_HASH_KEY(&(Var3.f_8[1 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[1 /*8*/])) != MISC::GET_HASH_KEY(&(Var3.f_8[iVar1 /*8*/])))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[1 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[1 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[iVar1 /*8*/])))
 						{
 							if (STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[1 /*8*/])))
 							{
 								STREAMING::REMOVE_IPL(&(Var3.f_8[1 /*8*/]));
-								Global_1652615 = 1;
+								Global_1654379 = 1;
 							}
 						}
-						if ((MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("REMOVE_ALL_STATES")) && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY(&(Var3.f_8[iVar1 /*8*/])))
+						if ((AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("REMOVE_ALL_STATES")) && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[iVar1 /*8*/])))
 						{
 							if (STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[2 /*8*/])))
 							{
 								STREAMING::REMOVE_IPL(&(Var3.f_8[2 /*8*/]));
-								Global_1652615 = 1;
+								Global_1654379 = 1;
 							}
 						}
-						if (MISC::GET_HASH_KEY(&(Var3.f_8[0 /*8*/])) != MISC::GET_HASH_KEY(""))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[0 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 						{
 							if (!STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[0 /*8*/])))
 							{
 								STREAMING::REQUEST_IPL(&(Var3.f_8[0 /*8*/]));
-								Global_1652615 = 1;
+								Global_1654379 = 1;
 							}
 						}
-						if (MISC::GET_HASH_KEY(&(Var3.f_34)) != MISC::GET_HASH_KEY(""))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_34)) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 						{
 							if (!STREAMING::IS_IPL_ACTIVE(&(Var3.f_34)))
 							{
 								STREAMING::REQUEST_IPL(&(Var3.f_34));
-								Global_1652615 = 1;
+								Global_1654379 = 1;
 							}
 						}
 					}
 					else if (iVar1 == 1)
 					{
-						if (MISC::GET_HASH_KEY(&(Var3.f_34)) != MISC::GET_HASH_KEY(""))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_34)) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 						{
 							if (STREAMING::IS_IPL_ACTIVE(&(Var3.f_34)))
 							{
 								STREAMING::REMOVE_IPL(&(Var3.f_34));
 							}
 						}
-						if (MISC::GET_HASH_KEY(&(Var3.f_8[0 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[0 /*8*/])) != MISC::GET_HASH_KEY(&(Var3.f_8[iVar1 /*8*/])))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[0 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[0 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[iVar1 /*8*/])))
 						{
 							if (STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[0 /*8*/])))
 							{
 								STREAMING::REMOVE_IPL(&(Var3.f_8[0 /*8*/]));
 							}
 						}
-						if ((MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("REMOVE_ALL_STATES")) && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY(&(Var3.f_8[iVar1 /*8*/])))
+						if ((AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("REMOVE_ALL_STATES")) && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[iVar1 /*8*/])))
 						{
 							if (STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[2 /*8*/])))
 							{
 								STREAMING::REMOVE_IPL(&(Var3.f_8[2 /*8*/]));
 							}
 						}
-						if (MISC::GET_HASH_KEY(&(Var3.f_8[1 /*8*/])) != MISC::GET_HASH_KEY(""))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[1 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 						{
 							if (!STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[1 /*8*/])))
 							{
@@ -349,28 +349,28 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 					}
 					else if (iVar1 == 2)
 					{
-						if (MISC::GET_HASH_KEY(&(Var3.f_34)) != MISC::GET_HASH_KEY(""))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_34)) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 						{
 							if (STREAMING::IS_IPL_ACTIVE(&(Var3.f_34)))
 							{
 								STREAMING::REMOVE_IPL(&(Var3.f_34));
 							}
 						}
-						if (MISC::GET_HASH_KEY(&(Var3.f_8[0 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[0 /*8*/])) != MISC::GET_HASH_KEY(&(Var3.f_8[iVar1 /*8*/])))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[0 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[0 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[iVar1 /*8*/])))
 						{
 							if (STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[0 /*8*/])))
 							{
 								STREAMING::REMOVE_IPL(&(Var3.f_8[0 /*8*/]));
 							}
 						}
-						if (MISC::GET_HASH_KEY(&(Var3.f_8[1 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[1 /*8*/])) != MISC::GET_HASH_KEY(&(Var3.f_8[iVar1 /*8*/])))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[1 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[1 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[iVar1 /*8*/])))
 						{
 							if (STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[1 /*8*/])))
 							{
 								STREAMING::REMOVE_IPL(&(Var3.f_8[1 /*8*/]));
 							}
 						}
-						if (MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("REMOVE_ALL_STATES"))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("REMOVE_ALL_STATES"))
 						{
 							if (!STREAMING::IS_IPL_ACTIVE(&(Var3.f_8[2 /*8*/])))
 							{
@@ -378,16 +378,16 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 							}
 						}
 					}
-					Global_39793[iParam0] = 1;
-					Global_39992[iParam0] = 1;
+					Global_39993[iParam0] = 1;
+					Global_40192[iParam0] = 1;
 					bVar0 = true;
 					break;
 				
 				case 2:
-					iVar6 = INTERIOR::GET_INTERIOR_AT_COORDS_WITH_TYPE(Var3, &(Var3.f_42));
+					iVar6 = unk_0xC519B5898C2310B1(Var3, &(Var3.f_42));
 					if (iVar6 != 0)
 					{
-						if (MISC::GET_HASH_KEY(&(Var3.f_50)) != MISC::GET_HASH_KEY(""))
+						if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_50)) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 						{
 							if (INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_50)))
 							{
@@ -396,21 +396,21 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 						}
 						if (iVar1 == 0)
 						{
-							if (MISC::GET_HASH_KEY(&(Var3.f_8[1 /*8*/])) != MISC::GET_HASH_KEY(""))
+							if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[1 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 							{
 								if (INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[1 /*8*/])))
 								{
 									INTERIOR::DEACTIVATE_INTERIOR_ENTITY_SET(iVar6, &(Var3.f_8[1 /*8*/]));
 								}
 							}
-							if ((MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("REMOVE_ALL_STATES")) && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY(&(Var3.f_8[iVar1 /*8*/])))
+							if ((AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("REMOVE_ALL_STATES")) && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[iVar1 /*8*/])))
 							{
 								if (INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[2 /*8*/])))
 								{
 									INTERIOR::DEACTIVATE_INTERIOR_ENTITY_SET(iVar6, &(Var3.f_8[2 /*8*/]));
 								}
 							}
-							if (MISC::GET_HASH_KEY(&(Var3.f_8[0 /*8*/])) != MISC::GET_HASH_KEY(""))
+							if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[0 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 							{
 								if (!INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[0 /*8*/])))
 								{
@@ -420,21 +420,21 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 						}
 						else if (iVar1 == 1)
 						{
-							if (MISC::GET_HASH_KEY(&(Var3.f_8[0 /*8*/])) != MISC::GET_HASH_KEY(""))
+							if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[0 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 							{
 								if (INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[0 /*8*/])))
 								{
 									INTERIOR::DEACTIVATE_INTERIOR_ENTITY_SET(iVar6, &(Var3.f_8[0 /*8*/]));
 								}
 							}
-							if ((MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("REMOVE_ALL_STATES")) && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY(&(Var3.f_8[iVar1 /*8*/])))
+							if ((AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("REMOVE_ALL_STATES")) && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[iVar1 /*8*/])))
 							{
 								if (INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[2 /*8*/])))
 								{
 									INTERIOR::DEACTIVATE_INTERIOR_ENTITY_SET(iVar6, &(Var3.f_8[2 /*8*/]));
 								}
 							}
-							if (MISC::GET_HASH_KEY(&(Var3.f_8[1 /*8*/])) != MISC::GET_HASH_KEY(""))
+							if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[1 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 							{
 								if (!INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[1 /*8*/])))
 								{
@@ -444,21 +444,21 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 						}
 						else if (iVar1 == 2)
 						{
-							if (MISC::GET_HASH_KEY(&(Var3.f_8[0 /*8*/])) != MISC::GET_HASH_KEY(""))
+							if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[0 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 							{
 								if (INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[0 /*8*/])))
 								{
 									INTERIOR::DEACTIVATE_INTERIOR_ENTITY_SET(iVar6, &(Var3.f_8[0 /*8*/]));
 								}
 							}
-							if (MISC::GET_HASH_KEY(&(Var3.f_8[1 /*8*/])) != MISC::GET_HASH_KEY(""))
+							if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[1 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(""))
 							{
 								if (INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[1 /*8*/])))
 								{
 									INTERIOR::DEACTIVATE_INTERIOR_ENTITY_SET(iVar6, &(Var3.f_8[1 /*8*/]));
 								}
 							}
-							if (MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("") && MISC::GET_HASH_KEY(&(Var3.f_8[2 /*8*/])) != MISC::GET_HASH_KEY("REMOVE_ALL_STATES"))
+							if (AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("") && AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&(Var3.f_8[2 /*8*/])) != AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT("REMOVE_ALL_STATES"))
 							{
 								if (!INTERIOR::IS_INTERIOR_ENTITY_SET_ACTIVE(iVar6, &(Var3.f_8[2 /*8*/])))
 								{
@@ -471,13 +471,13 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 							INTERIOR::REFRESH_INTERIOR(iVar6);
 						}
 					}
-					Global_39992[iParam0] = 1;
-					Global_39793[iParam0] = 1;
+					Global_40192[iParam0] = 1;
+					Global_39993[iParam0] = 1;
 					bVar0 = true;
 					break;
 				
 				case 3:
-					if (MISC::GET_DISTANCE_BETWEEN_COORDS(Var3, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false), true) < 250f)
+					if (HUD::SET_BLIP_NAME_FROM_TEXT_FILE(Var3, NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 0), 1) < 250f)
 					{
 						iVar4 = OBJECT::GET_RAYFIRE_MAP_OBJECT(Var3, 25f, &(Var3.f_8[0 /*8*/]));
 						if (OBJECT::DOES_RAYFIRE_MAP_OBJECT_EXIST(iVar4))
@@ -485,7 +485,7 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 							if (iVar1 == 0)
 							{
 								OBJECT::SET_STATE_OF_RAYFIRE_MAP_OBJECT(iVar4, 3);
-								Global_39992[iParam0] = 1;
+								Global_40192[iParam0] = 1;
 								bVar0 = true;
 							}
 							else if (iVar1 == 1)
@@ -493,7 +493,7 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 								if ((OBJECT::GET_STATE_OF_RAYFIRE_MAP_OBJECT(iVar4) != 6 && OBJECT::GET_STATE_OF_RAYFIRE_MAP_OBJECT(iVar4) != 7) && OBJECT::GET_STATE_OF_RAYFIRE_MAP_OBJECT(iVar4) != 8)
 								{
 									OBJECT::SET_STATE_OF_RAYFIRE_MAP_OBJECT(iVar4, 10);
-									Global_39992[iParam0] = 1;
+									Global_40192[iParam0] = 1;
 									bVar0 = true;
 								}
 							}
@@ -509,26 +509,26 @@ bool func_4(int iParam0, bool bParam1, int iParam2, bool bParam3)
 					if (iVar1 == 0)
 					{
 						ENTITY::REMOVE_MODEL_SWAP(Var3, 50f, Var3.f_4[1], Var3.f_4[0], false);
-						MISC::CLEAR_BIT(&(Global_38144[(iParam0 / 32)]), (iParam0 % 32));
+						VEHICLE::IS_VEHICLE_DRIVEABLE(&(Global_38344[(iParam0 / 32)]), (iParam0 % 32));
 					}
 					else if (iVar1 == 1)
 					{
 						ENTITY::CREATE_MODEL_SWAP(Var3, 50f, Var3.f_4[0], Var3.f_4[1], true);
-						MISC::SET_BIT(&(Global_38144[(iParam0 / 32)]), (iParam0 % 32));
+						unk_0xBE20AB8238688965(&(Global_38344[(iParam0 / 32)]), (iParam0 % 32));
 					}
 					bVar0 = true;
 					break;
 			}
 			if (bVar0)
 			{
-				Global_38597[iParam0] = 0;
-				Global_38796[iParam0] = iVar1;
+				Global_38797[iParam0] = 0;
+				Global_38996[iParam0] = iVar1;
 				if (!func_5())
 				{
-					if (!Global_39393[iParam0])
+					if (!Global_39593[iParam0])
 					{
-						Global_39393[iParam0] = 1;
-						Global_39592++;
+						Global_39593[iParam0] = 1;
+						Global_39792++;
 					}
 				}
 			}
@@ -548,12 +548,12 @@ int func_5()
 
 int func_6()
 {
-	return Global_30769;
+	return Global_30969;
 }
 
 int func_7()
 {
-	return Global_30768;
+	return Global_30968;
 }
 
 int func_8(var uParam0, int iParam1)
@@ -2203,6 +2203,6 @@ void func_10()
 	{
 		AUDIO::SET_AMBIENT_ZONE_STATE("AZ_SPECIAL_UFO_03", false, true);
 	}
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

@@ -37,17 +37,17 @@ void __EntryFunction__()
 	iLocal_11 = 12;
 	fLocal_14 = 0.001f;
 	iLocal_17 = -1;
-	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+	if (MISC::SET_BIT())
 	{
-		if (MISC::IS_BIT_SET(Global_1389296, 1))
+		if (unk_0xCE990E643CD9D0E5(Global_1389439, 1))
 		{
 			func_18();
 		}
 		else
 		{
-			NETWORK::NETWORK_SET_THIS_SCRIPT_IS_NETWORK_SCRIPT(32, false, -1);
+			NETWORK::NETWORK_REGISTER_PLAYER_BROADCAST_VARIABLES(32, 0, -1);
 			func_15(0, -1, 0);
-			MISC::SET_THIS_SCRIPT_CAN_BE_PAUSED(false);
+			WEAPON::GET_WEAPONTYPE_GROUP(0);
 			iLocal_20 = 1;
 		}
 	}
@@ -65,7 +65,7 @@ void __EntryFunction__()
 				func_18();
 			}
 		}
-		if (ENTITY::DOES_ENTITY_EXIST(iScriptParam_21))
+		if (MISC::IS_BIT_SET(iScriptParam_21))
 		{
 			if (BRAIN::IS_OBJECT_WITHIN_BRAIN_ACTIVATION_RANGE(iScriptParam_21))
 			{
@@ -74,7 +74,7 @@ void __EntryFunction__()
 					case 0:
 						if (ENTITY::DOES_ENTITY_HAVE_DRAWABLE(iScriptParam_21))
 						{
-							Local_19 = { ENTITY::GET_ENTITY_COORDS(iScriptParam_21, true) };
+							Local_19 = { NETWORK::NETWORK_ARE_HANDLES_THE_SAME(iScriptParam_21, 1) };
 							iLocal_18 = 1;
 						}
 						break;
@@ -108,35 +108,35 @@ void func_1()
 	int iVar0;
 	int iVar1;
 	int iVar2;
-	int iVar3;
+	bool bVar3;
 	
 	iVar0 = joaat("prop_money_bag_01");
 	iVar1 = joaat("pickup_money_med_bag");
-	iVar3 = MISC::GET_RANDOM_INT_IN_RANGE(70, 121);
-	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+	bVar3 = NETWORK::_NETWORK_GET_ROS_PRIVILEGE_25(70, 121);
+	if (MISC::SET_BIT())
 	{
 		iVar0 = joaat("prop_cash_pile_01");
-		iVar3 = MISC::GET_RANDOM_INT_IN_RANGE(50, 101);
-		iVar3 = func_2(iVar3, 1);
+		bVar3 = NETWORK::_NETWORK_GET_ROS_PRIVILEGE_25(50, 101);
+		bVar3 = func_2(bVar3, 1);
 	}
-	MISC::SET_BIT(&iVar2, 3);
-	MISC::SET_BIT(&iVar2, 4);
-	STREAMING::REQUEST_MODEL(iVar0);
-	while (!STREAMING::HAS_MODEL_LOADED(iVar0))
+	unk_0xBE20AB8238688965(&iVar2, 3);
+	unk_0xBE20AB8238688965(&iVar2, 4);
+	unk_0x78FCB2E22C41B9D5(iVar0);
+	while (!ENTITY::DOES_ENTITY_EXIST(iVar0))
 	{
 		SYSTEM::WAIT(0);
 	}
-	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+	if (MISC::SET_BIT())
 	{
-		OBJECT::CREATE_AMBIENT_PICKUP(iVar1, OBJECT::GET_SAFE_PICKUP_COORDS(Local_19, 1.2f, 1.5f), iVar2, iVar3, iVar0, false, false);
+		OBJECT::CREATE_AMBIENT_PICKUP(iVar1, OBJECT::GET_SAFE_PICKUP_COORDS(Local_19, 1.2f, 1.5f), iVar2, bVar3, iVar0, false, false);
 	}
 	else
 	{
-		OBJECT::CREATE_PICKUP(iVar1, OBJECT::GET_SAFE_PICKUP_COORDS(Local_19, 1.2f, 1.5f), iVar2, iVar3, false, iVar0);
+		OBJECT::CREATE_PICKUP(iVar1, OBJECT::GET_SAFE_PICKUP_COORDS(Local_19, 1.2f, 1.5f), iVar2, bVar3, false, iVar0);
 	}
 }
 
-int func_2(int iParam0, int iParam1)
+bool func_2(bool bParam0, int iParam1)
 {
 	float fVar0;
 	
@@ -146,17 +146,17 @@ int func_2(int iParam0, int iParam1)
 			break;
 		
 		case 1:
-			if (iParam0 > 0)
+			if (bParam0 > 0)
 			{
-				fVar0 = (SYSTEM::TO_FLOAT(iParam0) * Global_262145);
-				iParam0 = SYSTEM::ROUND(fVar0);
+				fVar0 = (SYSTEM::TO_FLOAT(bParam0) * Global_262145);
+				bParam0 = SYSTEM::ROUND(fVar0);
 			}
 			break;
 		
 		default:
 			break;
 	}
-	return iParam0;
+	return bParam0;
 }
 
 int func_3()
@@ -164,9 +164,9 @@ int func_3()
 	var uVar0;
 	
 	func_11(&uVar0);
-	if (Global_1312854 == 0)
+	if (Global_1312872 == 0)
 	{
-		if (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+		if (!MISC::SET_BIT())
 		{
 			return 1;
 		}
@@ -175,7 +175,7 @@ int func_3()
 	{
 		return 1;
 	}
-	if (Global_2462922)
+	if (Global_2464493)
 	{
 		return 1;
 	}
@@ -194,13 +194,13 @@ int func_3()
 	{
 		return 1;
 	}
-	if (!NETWORK::NETWORK_IS_SIGNED_ONLINE())
+	if (!NETWORK::NETWORK_SESSION_IS_IN_VOICE_SESSION())
 	{
 		return 1;
 	}
 	if (func_4() != 0)
 	{
-		if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(func_4()) == 0)
+		if (INTERIOR::GET_INTERIOR_AT_COORDS(func_4()) == 0)
 		{
 			return 1;
 		}
@@ -225,7 +225,7 @@ int func_4()
 
 int func_5()
 {
-	switch (Global_2463024)
+	switch (Global_2464595)
 	{
 		case 0:
 			return joaat("freemode");
@@ -237,17 +237,17 @@ int func_5()
 
 int func_6()
 {
-	return Global_30768;
+	return Global_30968;
 }
 
 bool func_7()
 {
-	return Global_2450632.f_598;
+	return Global_2451787.f_696;
 }
 
 int func_8(int iParam0)
 {
-	if (SCRIPT::GET_EVENT_EXISTS(1, iParam0))
+	if (unk_0x16F1FCCC54559709(1, iParam0))
 	{
 		return 1;
 	}
@@ -256,37 +256,37 @@ int func_8(int iParam0)
 
 bool func_9()
 {
-	return Global_2460680;
+	return Global_2462250;
 }
 
 bool func_10()
 {
-	return Global_2450632.f_593;
+	return Global_2451787.f_691;
 }
 
 void func_11(var uParam0)
 {
 	int iVar0;
-	int iVar1;
+	bool bVar1;
 	int iVar2;
 	struct<3> Var3;
 	
 	iVar0 = 0;
-	while (iVar0 < SCRIPT::GET_NUMBER_OF_EVENTS(1))
+	while (iVar0 < SCRIPT::GET_EVENT_AT_INDEX(1))
 	{
-		iVar1 = SCRIPT::GET_EVENT_AT_INDEX(1, iVar0);
-		if (iVar1 == 174)
+		bVar1 = SCRIPT::GET_EVENT_DATA(1, iVar0);
+		if (bVar1 == 174)
 		{
-			SCRIPT::GET_EVENT_DATA(1, iVar0, &iVar2, 2);
+			unk_0x477FAFFE21935947(1, iVar0, &iVar2, 2);
 			switch (iVar2)
 			{
-				case -1853120870:
+				case 1035596089:
 					func_12(iVar0);
 					break;
 				
-				case 589125870:
-					SCRIPT::GET_EVENT_DATA(1, iVar0, &Var3, 4);
-					if (Var3.f_2 == 653923311)
+				case 1120313136:
+					unk_0x477FAFFE21935947(1, iVar0, &Var3, 4);
+					if (Var3.f_2 == 397890833)
 					{
 						*uParam0 = 1;
 					}
@@ -304,25 +304,25 @@ void func_12(int iParam0)
 	int iVar2;
 	bool bVar3;
 	
-	if (SCRIPT::GET_EVENT_DATA(1, iParam0, &Var0, 3))
+	if (unk_0x477FAFFE21935947(1, iParam0, &Var0, 3))
 	{
 		if (func_14(Var0.f_1, 1, 1))
 		{
 			iVar1 = PLAYER::GET_PLAYER_PED(Var0.f_1);
-			if (ENTITY::DOES_ENTITY_EXIST(iVar1))
+			if (MISC::IS_BIT_SET(iVar1))
 			{
-				if (PED::IS_PED_IN_ANY_VEHICLE(iVar1, false))
+				if (SYSTEM::VDIST(iVar1, 0))
 				{
-					iVar2 = PED::GET_VEHICLE_PED_IS_IN(iVar1, false);
-					if (VEHICLE::IS_VEHICLE_WINDOW_INTACT(iVar2, Var0.f_2) && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
+					iVar2 = ENTITY::GET_ENTITY_MODEL(iVar1, 0);
+					if (VEHICLE::REMOVE_VEHICLE_WINDOW(iVar2, Var0.f_2) && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 					{
 						if (func_13(iVar2, &bVar3))
 						{
-							VEHICLE::REMOVE_VEHICLE_WINDOW(iVar2, Var0.f_2);
+							ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(iVar2, Var0.f_2);
 						}
 						if (bVar3)
 						{
-							ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&iVar2);
+							STREAMING::REMOVE_ANIM_DICT(&iVar2);
 						}
 					}
 				}
@@ -333,13 +333,13 @@ void func_12(int iParam0)
 
 int func_13(int iParam0, var uParam1)
 {
-	if (ENTITY::DOES_ENTITY_EXIST(iParam0))
+	if (MISC::IS_BIT_SET(iParam0))
 	{
 		if (!ENTITY::IS_ENTITY_A_MISSION_ENTITY(iParam0))
 		{
 			if (NETWORK::NETWORK_GET_ENTITY_IS_LOCAL(iParam0))
 			{
-				if (!VEHICLE::IS_THIS_MODEL_A_TRAIN(ENTITY::GET_ENTITY_MODEL(iParam0)))
+				if (!VEHICLE::IS_THIS_MODEL_A_TRAIN(MISC::GET_MODEL_DIMENSIONS(iParam0)))
 				{
 					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iParam0, false, true);
 					*uParam1 = 1;
@@ -364,18 +364,18 @@ int func_14(int iParam0, bool bParam1, bool bParam2)
 	iVar0 = iParam0;
 	if (iVar0 != -1)
 	{
-		if (NETWORK::NETWORK_IS_PLAYER_ACTIVE(iParam0))
+		if (AUDIO::PLAY_STREAM_FROM_VEHICLE(iParam0))
 		{
 			if (bParam1)
 			{
-				if (!PLAYER::IS_PLAYER_PLAYING(iParam0))
+				if (!ENTITY::IS_ENTITY_AT_COORD(iParam0))
 				{
 					return 0;
 				}
 			}
 			if (bParam2)
 			{
-				if (!Global_2439138.f_3[iVar0])
+				if (!Global_2440049.f_3[iVar0])
 				{
 					return 0;
 				}
@@ -408,7 +408,7 @@ int func_15(int iParam0, int iParam1, bool bParam2)
 		{
 			if (iParam0 == 0)
 			{
-				if (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+				if (!MISC::SET_BIT())
 				{
 					if (!bParam2)
 					{
@@ -459,11 +459,11 @@ int func_15(int iParam0, int iParam1, bool bParam2)
 	}
 	if (iParam1 > -1)
 	{
-		Global_1312501 = iVar0;
+		Global_1312519 = iVar0;
 	}
 	if (iParam0 == 0)
 	{
-		if (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+		if (!MISC::SET_BIT())
 		{
 			if (!bParam2)
 			{
@@ -491,16 +491,16 @@ int func_15(int iParam0, int iParam1, bool bParam2)
 
 bool func_16()
 {
-	return Global_1312854;
+	return Global_1312872;
 }
 
 void func_17()
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 void func_18()
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

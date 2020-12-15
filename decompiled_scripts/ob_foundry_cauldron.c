@@ -9,7 +9,7 @@
 
 void __EntryFunction__()
 {
-	int iVar0;
+	void fVar0;
 	
 	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(2))
 	{
@@ -18,19 +18,19 @@ void __EntryFunction__()
 	while (true)
 	{
 		SYSTEM::WAIT(0);
-		if (ENTITY::DOES_ENTITY_EXIST(iScriptParam_5))
+		if (MISC::IS_BIT_SET(iScriptParam_5))
 		{
-			if (BRAIN::IS_OBJECT_WITHIN_BRAIN_ACTIVATION_RANGE(iScriptParam_5) && SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("finalec1")) == 0)
+			if (BRAIN::IS_OBJECT_WITHIN_BRAIN_ACTIVATION_RANGE(iScriptParam_5) && INTERIOR::GET_INTERIOR_AT_COORDS(joaat("finalec1")) == 0)
 			{
 				switch (iLocal_2)
 				{
 					case 0:
-						if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+						if (!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()))
 						{
-							iVar0 = INTERIOR::GET_INTERIOR_FROM_ENTITY(PLAYER::PLAYER_PED_ID());
-							if (INTERIOR::IS_VALID_INTERIOR(iVar0))
+							fVar0 = MONEY::NETWORK_SPENT_REQUEST_HEIST(unk_0x9B0761B4C3EB8BC7());
+							if (unk_0x0B1B45E748AD48BA(fVar0))
 							{
-								if (INTERIOR::IS_INTERIOR_READY(iVar0))
+								if (INTERIOR::IS_INTERIOR_READY(fVar0))
 								{
 									if (INTERIOR::IS_INTERIOR_SCENE())
 									{
@@ -45,20 +45,20 @@ void __EntryFunction__()
 					case 1:
 						if (STREAMING::HAS_PTFX_ASSET_LOADED())
 						{
-							if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+							if (!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()))
 							{
-								if (!ENTITY::DOES_ENTITY_EXIST(iLocal_4))
+								if (!MISC::IS_BIT_SET(iLocal_4))
 								{
 									iLocal_4 = OBJECT::GET_CLOSEST_OBJECT_OF_TYPE(1090f, -1996f, 39f, 100f, joaat("v_ilev_found_cranebucket"), true, false, true);
 								}
 								if (!GRAPHICS::DOES_PARTICLE_FX_LOOPED_EXIST(iLocal_3))
 								{
-									if (ENTITY::DOES_ENTITY_EXIST(iLocal_4))
+									if (MISC::IS_BIT_SET(iLocal_4))
 									{
-										iVar0 = INTERIOR::GET_INTERIOR_FROM_ENTITY(PLAYER::PLAYER_PED_ID());
-										if (INTERIOR::IS_VALID_INTERIOR(iVar0))
+										fVar0 = MONEY::NETWORK_SPENT_REQUEST_HEIST(unk_0x9B0761B4C3EB8BC7());
+										if (unk_0x0B1B45E748AD48BA(fVar0))
 										{
-											if (INTERIOR::IS_INTERIOR_READY(iVar0))
+											if (INTERIOR::IS_INTERIOR_READY(fVar0))
 											{
 												if (INTERIOR::IS_INTERIOR_SCENE())
 												{
@@ -94,12 +94,12 @@ void func_1()
 	{
 		GRAPHICS::STOP_PARTICLE_FX_LOOPED(iLocal_3, false);
 	}
-	if (ENTITY::DOES_ENTITY_EXIST(iLocal_4))
+	if (MISC::IS_BIT_SET(iLocal_4))
 	{
 		ENTITY::SET_OBJECT_AS_NO_LONGER_NEEDED(&iLocal_4);
 	}
 	func_2("ob_foundry_cauldron Terminated >>>>>>>>>>>>>>>>>\n");
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 void func_2(char* sParam0)
@@ -107,9 +107,9 @@ void func_2(char* sParam0)
 	func_3(sParam0);
 }
 
-void func_3(char* sParam0)
+void func_3(var uParam0)
 {
-	if (MISC::ARE_STRINGS_EQUAL(sParam0, sParam0))
+	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS(uParam0, uParam0))
 	{
 	}
 }

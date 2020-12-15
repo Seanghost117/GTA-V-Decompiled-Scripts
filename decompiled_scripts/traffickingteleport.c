@@ -75,9 +75,9 @@ void __EntryFunction__()
 	iLocal_41 = 49;
 	iLocal_42 = 64;
 	iVar0 = PLAYER::GET_PLAYER_PED(PLAYER::GET_PLAYER_INDEX());
-	if (!ENTITY::IS_ENTITY_DEAD(iVar0, false))
+	if (!PED::IS_PED_IN_ANY_POLICE_VEHICLE(iVar0, 0))
 	{
-		ENTITY::SET_ENTITY_COORDS(iVar0, 2119.159f, 4813.522f, 40.2223f, true, false, false, true);
+		unk_0x03D382CB0B44E2FC(iVar0, 2119.159f, 4813.522f, 40.2223f, 1, 0, 0, 1);
 		ENTITY::SET_ENTITY_HEADING(iVar0, 225.2837f);
 	}
 	func_1(19, 0);
@@ -89,7 +89,7 @@ void func_1(int iParam0, int iParam1)
 	{
 		return;
 	}
-	Global_111638.f_8608[iParam0] = 1;
-	Global_111638.f_8608.f_236[iParam0] = (MISC::GET_GAME_TIMER() + iParam1);
+	Global_111858.f_8609[iParam0] = 1;
+	Global_111858.f_8609.f_236[iParam0] = (MISC::GET_GAME_TIMER() + iParam1);
 }
 

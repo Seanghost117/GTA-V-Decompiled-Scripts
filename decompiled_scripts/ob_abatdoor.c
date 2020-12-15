@@ -19,16 +19,16 @@ void __EntryFunction__()
 	{
 		func_4();
 	}
-	if (ENTITY::DOES_ENTITY_EXIST(iScriptParam_6))
+	if (MISC::IS_BIT_SET(iScriptParam_6))
 	{
-		ENTITY::FREEZE_ENTITY_POSITION(iScriptParam_6, true);
-		Local_4 = { ENTITY::GET_ENTITY_COORDS(iScriptParam_6, true) };
-		Local_5 = { ENTITY::GET_ENTITY_ROTATION(iScriptParam_6, 2) };
+		ENTITY::SET_ENTITY_COORDS(iScriptParam_6, 1);
+		Local_4 = { NETWORK::NETWORK_ARE_HANDLES_THE_SAME(iScriptParam_6, 1) };
+		Local_5 = { NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(iScriptParam_6, 2) };
 	}
 	while (true)
 	{
 		SYSTEM::WAIT(0);
-		if (ENTITY::DOES_ENTITY_EXIST(iScriptParam_6))
+		if (MISC::IS_BIT_SET(iScriptParam_6))
 		{
 			if (BRAIN::IS_OBJECT_WITHIN_BRAIN_ACTIVATION_RANGE(iScriptParam_6))
 			{
@@ -37,13 +37,13 @@ void __EntryFunction__()
 					case 0:
 						if (ENTITY::DOES_ENTITY_HAVE_DRAWABLE(iScriptParam_6))
 						{
-							STREAMING::REQUEST_MODEL(joaat("p_abat_roller_1_col"));
-							if (STREAMING::HAS_MODEL_LOADED(joaat("p_abat_roller_1_col")))
+							unk_0x78FCB2E22C41B9D5(joaat("p_abat_roller_1_col"));
+							if (ENTITY::DOES_ENTITY_EXIST(joaat("p_abat_roller_1_col")))
 							{
 								if (!func_3(Local_4, 0f, 0f, 0f, 0))
 								{
 									iLocal_3 = OBJECT::CREATE_OBJECT(joaat("p_abat_roller_1_col"), Local_4, true, true, false);
-									ENTITY::SET_ENTITY_ROTATION(iLocal_3, Local_5, 2, true);
+									ENTITY::DETACH_ENTITY(iLocal_3, Local_5, 2, 1);
 									iLocal_2 = 1;
 								}
 							}
@@ -53,7 +53,7 @@ void __EntryFunction__()
 					case 1:
 						if (ENTITY::DOES_ENTITY_HAVE_DRAWABLE(iScriptParam_6))
 						{
-							if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("michael2")) > 0)
+							if (INTERIOR::GET_INTERIOR_AT_COORDS(joaat("michael2")) > 0)
 							{
 								STREAMING::REQUEST_ANIM_DICT("map_objects");
 								if (STREAMING::HAS_ANIM_DICT_LOADED("map_objects"))
@@ -67,9 +67,9 @@ void __EntryFunction__()
 					case 2:
 						if (ENTITY::DOES_ENTITY_HAVE_DRAWABLE(iScriptParam_6))
 						{
-							if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("michael2")) > 0)
+							if (INTERIOR::GET_INTERIOR_AT_COORDS(joaat("michael2")) > 0)
 							{
-								if (Global_95175)
+								if (Global_95386)
 								{
 									if (STREAMING::HAS_ANIM_DICT_LOADED("map_objects"))
 									{
@@ -84,17 +84,17 @@ void __EntryFunction__()
 					case 3:
 						fVar3 = 0.35f;
 						Var0 = { Local_4 + Vector(3.45f, 0f, 0f) };
-						if (ENTITY::DOES_ENTITY_EXIST(iLocal_3))
+						if (MISC::IS_BIT_SET(iLocal_3))
 						{
-							Var1 = { ENTITY::GET_ENTITY_COORDS(iLocal_3, true) };
+							Var1 = { NETWORK::NETWORK_ARE_HANDLES_THE_SAME(iLocal_3, 1) };
 							if (!func_2(Var1, Var0, 0.1f, 0))
 							{
 								Var2 = { Var0 - Var1 };
-								ENTITY::SET_ENTITY_COORDS(iLocal_3, Var1 + func_1(Var2) * FtoV(MISC::GET_FRAME_TIME()) * Vector(fVar3, fVar3, fVar3), true, false, false, true);
+								unk_0x03D382CB0B44E2FC(iLocal_3, Var1 + func_1(Var2) * FtoV(MISC::GET_FRAME_TIME()) * Vector(fVar3, fVar3, fVar3), 1, 0, 0, 1);
 							}
 							else
 							{
-								Global_95176 = 1;
+								Global_95387 = 1;
 								iLocal_2 = 4;
 							}
 						}
@@ -144,20 +144,20 @@ int func_2(struct<3> Param0, struct<3> Param1, float fParam2, bool bParam3)
 	}
 	if (!bParam3)
 	{
-		if (MISC::ABSF((Param0.x - Param1.x)) <= fParam2)
+		if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.x - Param1.x)) <= fParam2)
 		{
-			if (MISC::ABSF((Param0.f_1 - Param1.f_1)) <= fParam2)
+			if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.f_1 - Param1.f_1)) <= fParam2)
 			{
-				if (MISC::ABSF((Param0.f_2 - Param1.f_2)) <= fParam2)
+				if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.f_2 - Param1.f_2)) <= fParam2)
 				{
 					return 1;
 				}
 			}
 		}
 	}
-	else if (MISC::ABSF((Param0.x - Param1.x)) <= fParam2)
+	else if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.x - Param1.x)) <= fParam2)
 	{
-		if (MISC::ABSF((Param0.f_1 - Param1.f_1)) <= fParam2)
+		if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.f_1 - Param1.f_1)) <= fParam2)
 		{
 			return 1;
 		}
@@ -176,13 +176,13 @@ bool func_3(struct<3> Param0, struct<3> Param1, bool bParam2)
 
 void func_4()
 {
-	if (ENTITY::DOES_ENTITY_EXIST(iLocal_3))
+	if (MISC::IS_BIT_SET(iLocal_3))
 	{
-		OBJECT::DELETE_OBJECT(&iLocal_3);
+		PED::GET_PED_BONE_INDEX(&iLocal_3);
 	}
-	STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(joaat("p_abat_roller_1_col"));
+	unk_0x74528AC0906CBABE(joaat("p_abat_roller_1_col"));
 	func_5("ob_abatdoor Terminated >>>>>>>>>>>>>>>>>\n");
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 void func_5(char* sParam0)
@@ -190,9 +190,9 @@ void func_5(char* sParam0)
 	func_6(sParam0);
 }
 
-void func_6(char* sParam0)
+void func_6(var uParam0)
 {
-	if (MISC::ARE_STRINGS_EQUAL(sParam0, sParam0))
+	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS(uParam0, uParam0))
 	{
 	}
 }

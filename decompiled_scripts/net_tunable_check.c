@@ -44,11 +44,11 @@ void __EntryFunction__()
 	sLocal_20 = "NULL";
 	while (true)
 	{
-		if (func_7() || Global_1686701 == 1)
+		if (func_7() || Global_1688724 == 1)
 		{
 			func_6();
 		}
-		if (func_1(&uLocal_21, &Global_291130))
+		if (func_1(&uLocal_21, &Global_292399))
 		{
 			func_6();
 		}
@@ -101,16 +101,16 @@ int func_1(var uParam0, var uParam1)
 								if (fVar0 > Var3.f_1 || fVar0 < Var3)
 								{
 									uParam0->f_2 = 1;
-									uParam0->f_3 = MISC::GET_RANDOM_INT_IN_RANGE(20000, 30000);
+									uParam0->f_3 = NETWORK::_NETWORK_GET_ROS_PRIVILEGE_25(20000, 30000);
 									uParam0->f_1 = MISC::GET_GAME_TIMER();
 								}
 							}
-							else if (NETWORK::NETWORK_ACCESS_TUNABLE_INT_HASH(iVar7, Var3.f_5, &iVar1))
+							else if (NETWORK::NETWORK_DOES_TUNABLE_EXIST_HASH(iVar7, Var3.f_5, &iVar1))
 							{
 								if (iVar1 > Var3.f_3 || iVar1 < Var3.f_2)
 								{
 									uParam0->f_2 = 1;
-									uParam0->f_3 = MISC::GET_RANDOM_INT_IN_RANGE(20000, 30000);
+									uParam0->f_3 = NETWORK::_NETWORK_GET_ROS_PRIVILEGE_25(20000, 30000);
 									uParam0->f_1 = MISC::GET_GAME_TIMER();
 								}
 							}
@@ -21349,11 +21349,11 @@ void func_2(int iParam0, var uParam1)
 
 int func_3()
 {
-	if (Global_2457997)
+	if (Global_2459539)
 	{
 		return 32;
 	}
-	return (32 - Global_2457998);
+	return (32 - Global_2459540);
 }
 
 int func_4(int iParam0)
@@ -21364,7 +21364,7 @@ int func_4(int iParam0)
 	{
 		StringCopy(&cVar0, "CONTENT_MODIFIER_", 64);
 		StringIntConCat(&cVar0, (iParam0 - 28), 64);
-		return MISC::GET_HASH_KEY(&cVar0);
+		return AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(&cVar0);
 	}
 	switch (iParam0)
 	{
@@ -21490,13 +21490,13 @@ void func_5()
 {
 	MISC::_CLEAR_TACTICAL_ANALYSIS_POINTS();
 	MISC::ADD_STUNT_JUMP(-9f, -9f, -9f, -10f, -10f, -10f, -25f, -25f, -25f, -28f, -28f, -28f, 0f, 0f, 0f, 0, 0, 0);
-	PED::ADD_SCENARIO_BLOCKING_AREA(-9f, -9f, -9f, -10f, -10f, -10f, false, true, true, true);
+	PATHFIND::SET_ROADS_IN_AREA(-9f, -9f, -9f, -10f, -10f, -10f, false, true, 1, 1);
 	func_5();
 }
 
 void func_6()
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 int func_7()
@@ -21504,9 +21504,9 @@ int func_7()
 	var uVar0;
 	
 	func_15(&uVar0);
-	if (Global_1312854 == 0)
+	if (Global_1312872 == 0)
 	{
-		if (!NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+		if (!MISC::SET_BIT())
 		{
 			return 1;
 		}
@@ -21515,7 +21515,7 @@ int func_7()
 	{
 		return 1;
 	}
-	if (Global_2462922)
+	if (Global_2464493)
 	{
 		return 1;
 	}
@@ -21534,13 +21534,13 @@ int func_7()
 	{
 		return 1;
 	}
-	if (!NETWORK::NETWORK_IS_SIGNED_ONLINE())
+	if (!NETWORK::NETWORK_SESSION_IS_IN_VOICE_SESSION())
 	{
 		return 1;
 	}
 	if (func_8() != 0)
 	{
-		if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(func_8()) == 0)
+		if (INTERIOR::GET_INTERIOR_AT_COORDS(func_8()) == 0)
 		{
 			return 1;
 		}
@@ -21565,7 +21565,7 @@ int func_8()
 
 int func_9()
 {
-	switch (Global_2463024)
+	switch (Global_2464595)
 	{
 		case 0:
 			return joaat("freemode");
@@ -21577,17 +21577,17 @@ int func_9()
 
 int func_10()
 {
-	return Global_30768;
+	return Global_30968;
 }
 
 bool func_11()
 {
-	return Global_2450632.f_598;
+	return Global_2451787.f_696;
 }
 
 int func_12(int iParam0)
 {
-	if (SCRIPT::GET_EVENT_EXISTS(1, iParam0))
+	if (unk_0x16F1FCCC54559709(1, iParam0))
 	{
 		return 1;
 	}
@@ -21596,37 +21596,37 @@ int func_12(int iParam0)
 
 bool func_13()
 {
-	return Global_2460680;
+	return Global_2462250;
 }
 
 bool func_14()
 {
-	return Global_2450632.f_593;
+	return Global_2451787.f_691;
 }
 
 void func_15(var uParam0)
 {
 	int iVar0;
-	int iVar1;
+	bool bVar1;
 	int iVar2;
 	struct<3> Var3;
 	
 	iVar0 = 0;
-	while (iVar0 < SCRIPT::GET_NUMBER_OF_EVENTS(1))
+	while (iVar0 < SCRIPT::GET_EVENT_AT_INDEX(1))
 	{
-		iVar1 = SCRIPT::GET_EVENT_AT_INDEX(1, iVar0);
-		if (iVar1 == 174)
+		bVar1 = SCRIPT::GET_EVENT_DATA(1, iVar0);
+		if (bVar1 == 174)
 		{
-			SCRIPT::GET_EVENT_DATA(1, iVar0, &iVar2, 2);
+			unk_0x477FAFFE21935947(1, iVar0, &iVar2, 2);
 			switch (iVar2)
 			{
-				case -1853120870:
+				case 1035596089:
 					func_16(iVar0);
 					break;
 				
-				case 589125870:
-					SCRIPT::GET_EVENT_DATA(1, iVar0, &Var3, 4);
-					if (Var3.f_2 == 653923311)
+				case 1120313136:
+					unk_0x477FAFFE21935947(1, iVar0, &Var3, 4);
+					if (Var3.f_2 == 397890833)
 					{
 						*uParam0 = 1;
 					}
@@ -21644,25 +21644,25 @@ void func_16(int iParam0)
 	int iVar2;
 	bool bVar3;
 	
-	if (SCRIPT::GET_EVENT_DATA(1, iParam0, &Var0, 3))
+	if (unk_0x477FAFFE21935947(1, iParam0, &Var0, 3))
 	{
 		if (func_18(Var0.f_1, 1, 1))
 		{
 			iVar1 = PLAYER::GET_PLAYER_PED(Var0.f_1);
-			if (ENTITY::DOES_ENTITY_EXIST(iVar1))
+			if (MISC::IS_BIT_SET(iVar1))
 			{
-				if (PED::IS_PED_IN_ANY_VEHICLE(iVar1, false))
+				if (SYSTEM::VDIST(iVar1, 0))
 				{
-					iVar2 = PED::GET_VEHICLE_PED_IS_IN(iVar1, false);
-					if (VEHICLE::IS_VEHICLE_WINDOW_INTACT(iVar2, Var0.f_2) && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
+					iVar2 = ENTITY::GET_ENTITY_MODEL(iVar1, 0);
+					if (VEHICLE::REMOVE_VEHICLE_WINDOW(iVar2, Var0.f_2) && NETWORK::NETWORK_GET_THIS_SCRIPT_IS_NETWORK_SCRIPT())
 					{
 						if (func_17(iVar2, &bVar3))
 						{
-							VEHICLE::REMOVE_VEHICLE_WINDOW(iVar2, Var0.f_2);
+							ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(iVar2, Var0.f_2);
 						}
 						if (bVar3)
 						{
-							ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&iVar2);
+							STREAMING::REMOVE_ANIM_DICT(&iVar2);
 						}
 					}
 				}
@@ -21673,13 +21673,13 @@ void func_16(int iParam0)
 
 int func_17(int iParam0, var uParam1)
 {
-	if (ENTITY::DOES_ENTITY_EXIST(iParam0))
+	if (MISC::IS_BIT_SET(iParam0))
 	{
 		if (!ENTITY::IS_ENTITY_A_MISSION_ENTITY(iParam0))
 		{
 			if (NETWORK::NETWORK_GET_ENTITY_IS_LOCAL(iParam0))
 			{
-				if (!VEHICLE::IS_THIS_MODEL_A_TRAIN(ENTITY::GET_ENTITY_MODEL(iParam0)))
+				if (!VEHICLE::IS_THIS_MODEL_A_TRAIN(MISC::GET_MODEL_DIMENSIONS(iParam0)))
 				{
 					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iParam0, false, true);
 					*uParam1 = 1;
@@ -21704,18 +21704,18 @@ int func_18(int iParam0, bool bParam1, bool bParam2)
 	iVar0 = iParam0;
 	if (iVar0 != -1)
 	{
-		if (NETWORK::NETWORK_IS_PLAYER_ACTIVE(iParam0))
+		if (AUDIO::PLAY_STREAM_FROM_VEHICLE(iParam0))
 		{
 			if (bParam1)
 			{
-				if (!PLAYER::IS_PLAYER_PLAYING(iParam0))
+				if (!ENTITY::IS_ENTITY_AT_COORD(iParam0))
 				{
 					return 0;
 				}
 			}
 			if (bParam2)
 			{
-				if (!Global_2439138.f_3[iVar0])
+				if (!Global_2440049.f_3[iVar0])
 				{
 					return 0;
 				}

@@ -27,9 +27,9 @@
 
 void __EntryFunction__()
 {
-	if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("wp_partyboombox")) > 1)
+	if (INTERIOR::GET_INTERIOR_AT_COORDS(joaat("wp_partyboombox")) > 1)
 	{
-		SCRIPT::TERMINATE_THIS_THREAD();
+		ENTITY::STOP_ENTITY_ANIM();
 	}
 	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(18))
 	{
@@ -45,7 +45,7 @@ void __EntryFunction__()
 		switch (iLocal_0)
 		{
 			case 0:
-				if (CLOCK::GET_CLOCK_HOURS() >= 22 || CLOCK::GET_CLOCK_HOURS() <= 4)
+				if (CLOCK::GET_CLOCK_DAY_OF_MONTH() >= 22 || CLOCK::GET_CLOCK_DAY_OF_MONTH() <= 4)
 				{
 					iLocal_0 = 1;
 				}
@@ -67,7 +67,7 @@ void __EntryFunction__()
 				break;
 			
 			case 3:
-				if (!STREAMING::IS_NEW_LOAD_SCENE_ACTIVE() && !STREAMING::IS_PLAYER_SWITCH_IN_PROGRESS())
+				if (!STREAMING::IS_NEW_LOAD_SCENE_ACTIVE() && !LOCALIZATION::GET_CURRENT_LANGUAGE())
 				{
 					func_1();
 				}
@@ -82,6 +82,6 @@ void func_1()
 	{
 		STREAMING::REMOVE_IPL("ID2_21_G_Night");
 	}
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

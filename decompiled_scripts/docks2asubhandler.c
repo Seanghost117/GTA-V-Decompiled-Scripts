@@ -1,7 +1,7 @@
 #region Local Var
 	int iLocal_0 = 0;
 	int iLocal_1 = 0;
-	int iLocal_2 = 0;
+	var uLocal_2 = 0;
 	struct<2> ScriptParam_0 = { 0, 0 } ;
 #endregion
 
@@ -15,44 +15,44 @@ void __EntryFunction__()
 	}
 	iLocal_0 = ScriptParam_3;
 	iLocal_1 = ScriptParam_3.f_1;
-	while (!MISC::IS_BIT_SET(iLocal_2, 1))
+	while (!unk_0xCE990E643CD9D0E5(uLocal_2, 1))
 	{
-		if (!MISC::IS_BIT_SET(iLocal_2, 0))
+		if (!unk_0xCE990E643CD9D0E5(uLocal_2, 0))
 		{
-			if (ENTITY::DOES_ENTITY_EXIST(iLocal_0))
+			if (MISC::IS_BIT_SET(iLocal_0))
 			{
-				if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_0, false))
+				if (ENTITY::GET_ENTITY_COORDS(iLocal_0, false))
 				{
 					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iLocal_0, false, true);
-					ENTITY::FREEZE_ENTITY_POSITION(iLocal_0, true);
+					ENTITY::SET_ENTITY_COORDS(iLocal_0, 1);
 					ENTITY::SET_ENTITY_PROOFS(iLocal_0, true, true, true, true, true, false, false, false);
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_1))
+					if (MISC::IS_BIT_SET(iLocal_1))
 					{
 						ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iLocal_1, false, true);
-						ENTITY::FREEZE_ENTITY_POSITION(iLocal_1, true);
+						ENTITY::SET_ENTITY_COORDS(iLocal_1, 1);
 						ENTITY::SET_ENTITY_PROOFS(iLocal_1, true, true, true, true, true, false, false, false);
 					}
-					MISC::SET_BIT(&iLocal_2, 0);
+					unk_0xBE20AB8238688965(&uLocal_2, 0);
 				}
 			}
 		}
-		else if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+		else if (!PED::IS_PED_IN_ANY_POLICE_VEHICLE(unk_0x9B0761B4C3EB8BC7(), 0))
 		{
-			if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_0, false))
+			if (ENTITY::GET_ENTITY_COORDS(iLocal_0, false))
 			{
-				fVar0 = SYSTEM::VDIST2(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), ENTITY::GET_ENTITY_COORDS(iLocal_0, true));
+				fVar0 = SYSTEM::VDIST2(NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 1), NETWORK::NETWORK_ARE_HANDLES_THE_SAME(iLocal_0, 1));
 				if (fVar0 > 90000f)
 				{
-					MISC::SET_BIT(&iLocal_2, 1);
+					unk_0xBE20AB8238688965(&uLocal_2, 1);
 				}
 				else if (fVar0 > 40000f && !ENTITY::IS_ENTITY_ON_SCREEN(iLocal_0))
 				{
-					MISC::SET_BIT(&iLocal_2, 1);
+					unk_0xBE20AB8238688965(&uLocal_2, 1);
 				}
 			}
 			else
 			{
-				MISC::SET_BIT(&iLocal_2, 1);
+				unk_0xBE20AB8238688965(&uLocal_2, 1);
 			}
 		}
 		SYSTEM::WAIT(0);
@@ -62,8 +62,8 @@ void __EntryFunction__()
 
 void func_1()
 {
-	ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&iLocal_0);
+	STREAMING::REMOVE_ANIM_DICT(&iLocal_0);
 	ENTITY::SET_ENTITY_AS_NO_LONGER_NEEDED(&iLocal_1);
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

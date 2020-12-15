@@ -46,7 +46,7 @@ void __EntryFunction__()
 	{
 		if (!bVar1)
 		{
-			switch (func_1(PLAYER::PLAYER_PED_ID()))
+			switch (func_1(unk_0x9B0761B4C3EB8BC7()))
 			{
 				case 1:
 					if (AUDIO::LOAD_STREAM("MISSION_COMPLETE_FRANKLIN_SMALL", 0))
@@ -88,15 +88,15 @@ void __EntryFunction__()
 int func_1(int iParam0)
 {
 	int iVar0;
-	int iVar1;
+	void fVar1;
 	
-	if (ENTITY::DOES_ENTITY_EXIST(iParam0))
+	if (MISC::IS_BIT_SET(iParam0))
 	{
-		iVar1 = ENTITY::GET_ENTITY_MODEL(iParam0);
+		fVar1 = MISC::GET_MODEL_DIMENSIONS(iParam0);
 		iVar0 = 0;
 		while (iVar0 <= 2)
 		{
-			if (func_2(iVar0) == iVar1)
+			if (func_2(iVar0) == fVar1)
 			{
 				return iVar0;
 			}
@@ -120,7 +120,7 @@ int func_2(int iParam0)
 
 var func_3(int iParam0)
 {
-	return Global_1798[iParam0 /*29*/];
+	return Global_1848[iParam0 /*29*/];
 }
 
 bool func_4(int iParam0)
@@ -131,6 +131,6 @@ bool func_4(int iParam0)
 void func_5()
 {
 	AUDIO::STOP_STREAM();
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

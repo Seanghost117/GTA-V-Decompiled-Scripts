@@ -1,5 +1,5 @@
 void __EntryFunction__()
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 

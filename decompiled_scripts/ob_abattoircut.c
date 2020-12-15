@@ -11,16 +11,16 @@ void __EntryFunction__()
 	{
 		func_1();
 	}
-	if (ENTITY::DOES_ENTITY_EXIST(iScriptParam_3))
+	if (MISC::IS_BIT_SET(iScriptParam_3))
 	{
-		ENTITY::FREEZE_ENTITY_POSITION(iScriptParam_3, true);
+		ENTITY::SET_ENTITY_COORDS(iScriptParam_3, 1);
 	}
 	while (true)
 	{
 		SYSTEM::WAIT(0);
-		if (ENTITY::DOES_ENTITY_EXIST(iScriptParam_3))
+		if (MISC::IS_BIT_SET(iScriptParam_3))
 		{
-			if (BRAIN::IS_OBJECT_WITHIN_BRAIN_ACTIVATION_RANGE(iScriptParam_3) && SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("michael2")) > 0)
+			if (BRAIN::IS_OBJECT_WITHIN_BRAIN_ACTIVATION_RANGE(iScriptParam_3) && INTERIOR::GET_INTERIOR_AT_COORDS(joaat("michael2")) > 0)
 			{
 				switch (iLocal_2)
 				{
@@ -58,8 +58,8 @@ void __EntryFunction__()
 void func_1()
 {
 	func_2("ob_abattoir Terminated >>>>>>>>>>>>>>>>>\n");
-	STREAMING::REMOVE_ANIM_DICT("MISSMIC2");
-	SCRIPT::TERMINATE_THIS_THREAD();
+	unk_0x1082C25039B168F8("MISSMIC2");
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 void func_2(char* sParam0)
@@ -67,9 +67,9 @@ void func_2(char* sParam0)
 	func_3(sParam0);
 }
 
-void func_3(char* sParam0)
+void func_3(var uParam0)
 {
-	if (MISC::ARE_STRINGS_EQUAL(sParam0, sParam0))
+	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS(uParam0, uParam0))
 	{
 	}
 }

@@ -112,20 +112,20 @@ void func_1()
 void func_2()
 {
 	int iVar0;
-	int iVar1;
+	bool bVar1;
 	struct<2> Var2;
 	var uVar3;
 	
 	iVar0 = 0;
-	while (iVar0 < SCRIPT::GET_NUMBER_OF_EVENTS(2))
+	while (iVar0 < SCRIPT::GET_EVENT_AT_INDEX(2))
 	{
-		iVar1 = SCRIPT::GET_EVENT_AT_INDEX(2, iVar0);
-		if (func_10(iVar1))
+		bVar1 = SCRIPT::GET_EVENT_DATA(2, iVar0);
+		if (func_10(bVar1))
 		{
 			func_9(&Var2);
-			func_8(2, iVar0, iVar1, &Var2);
+			func_8(2, iVar0, bVar1, &Var2);
 			Var2.f_1 = (MISC::GET_FRAME_COUNT() - 1);
-			Var2 = iVar1;
+			Var2 = bVar1;
 			if (!func_7(&Var2, &uVar3))
 			{
 				func_6(&Var2);
@@ -136,12 +136,12 @@ void func_2()
 	}
 }
 
-void func_3(int iParam0)
+void func_3(bool bParam0)
 {
 	int iVar0;
 	
-	iVar0 = *iParam0;
-	if (((func_5() && func_4(iVar0)) && iVar0 != 244) && NETWORK::NETWORK_CAN_BAIL())
+	iVar0 = *bParam0;
+	if (((func_5() && func_4(iVar0)) && iVar0 != 245) && NETWORK::NETWORK_CAN_BAIL())
 	{
 		NETWORK::NETWORK_BAIL(0, 1, 0);
 	}
@@ -149,32 +149,32 @@ void func_3(int iParam0)
 
 bool func_4(int iParam0)
 {
-	return (((iParam0 == 245 || iParam0 == 246) || iParam0 == 247) || iParam0 == 244);
+	return (((iParam0 == 246 || iParam0 == 247) || iParam0 == 248) || iParam0 == 245);
 }
 
 bool func_5()
 {
-	return Global_1590535[PLAYER::PLAYER_ID() /*876*/].f_196 != 0;
+	return Global_1590682[PLAYER::PLAYER_ID() /*883*/].f_196 != 0;
 }
 
-int func_6(int iParam0)
+int func_6(bool bParam0)
 {
-	if (Global_31045.f_61 < 20)
+	if (Global_31245.f_61 < 20)
 	{
-		Global_31045[Global_31045.f_61 /*3*/] = { *iParam0 };
-		Global_31045.f_61++;
+		Global_31245[Global_31245.f_61 /*3*/] = { *bParam0 };
+		Global_31245.f_61++;
 		return 1;
 	}
 	return 0;
 }
 
-int func_7(int iParam0, var uParam1)
+int func_7(bool bParam0, var uParam1)
 {
 	*uParam1 = 0;
 	*uParam1 = 0;
-	while (*uParam1 < Global_31045.f_61)
+	while (*uParam1 < Global_31245.f_61)
 	{
-		if (Global_31045[*uParam1 /*3*/] == *iParam0 && Global_31045[*uParam1 /*3*/].f_2 == iParam0->f_2)
+		if (Global_31245[*uParam1 /*3*/] == *bParam0 && Global_31245[*uParam1 /*3*/].f_2 == bParam0->f_2)
 		{
 			return 1;
 		}
@@ -183,13 +183,13 @@ int func_7(int iParam0, var uParam1)
 	return 0;
 }
 
-void func_8(int iParam0, int iParam1, int iParam2, var uParam3)
+void func_8(int iParam0, int iParam1, bool bParam2, var uParam3)
 {
 	var uVar0;
 	
-	if (((iParam2 == 244 || iParam2 == 245) || iParam2 == 246) || iParam2 == 247)
+	if (((bParam2 == 245 || bParam2 == 246) || bParam2 == 247) || bParam2 == 248)
 	{
-		if (SCRIPT::GET_EVENT_DATA(iParam0, iParam1, &uVar0, 1))
+		if (unk_0x477FAFFE21935947(iParam0, iParam1, &uVar0, 1))
 		{
 			uParam3->f_2 = uVar0;
 		}
@@ -203,9 +203,9 @@ void func_9(var uParam0)
 	uParam0->f_2 = -1;
 }
 
-bool func_10(int iParam0)
+bool func_10(bool bParam0)
 {
-	return func_4(iParam0);
+	return func_4(bParam0);
 }
 
 int func_11()

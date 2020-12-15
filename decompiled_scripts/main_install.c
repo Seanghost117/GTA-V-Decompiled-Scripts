@@ -1,13 +1,13 @@
 #region Local Var
-	int iLocal_0 = 0;
-	int iLocal_1 = 0;
+	bool bLocal_0 = 0;
+	bool bLocal_1 = 0;
 #endregion
 
 void __EntryFunction__()
 {
 	int iVar0;
 	
-	iLocal_0 = -1;
+	bLocal_0 = -1;
 	MISC::NETWORK_SET_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
 	STREAMING::REQUEST_IPL("prologue06_int");
 	STREAMING::REQUEST_IPL("prologue01");
@@ -40,18 +40,18 @@ void __EntryFunction__()
 	STREAMING::REMOVE_IPL("prologue03_grv_dug");
 	STREAMING::REMOVE_IPL("prologue_grv_torch");
 	STREAMING::SET_MAPDATACULLBOX_ENABLED("prologue", true);
-	STREAMING::REQUEST_MODEL(joaat("csb_prolsec"));
-	while (!STREAMING::HAS_MODEL_LOADED(joaat("csb_prolsec")))
+	unk_0x78FCB2E22C41B9D5(joaat("csb_prolsec"));
+	while (!ENTITY::DOES_ENTITY_EXIST(joaat("csb_prolsec")))
 	{
 		SYSTEM::WAIT(0);
 	}
 	PLAYER::SET_PLAYER_MODEL(PLAYER::PLAYER_ID(), joaat("csb_prolsec"));
-	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+	if (!PED::IS_PED_IN_ANY_POLICE_VEHICLE(unk_0x9B0761B4C3EB8BC7(), 0))
 	{
-		ENTITY::SET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 5313.8f, -5207.2f, 83.5f, true, false, false, true);
-		ENTITY::SET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID(), 169.2f);
+		unk_0x03D382CB0B44E2FC(unk_0x9B0761B4C3EB8BC7(), 5313.8f, -5207.2f, 83.5f, 1, 0, 0, 1);
+		ENTITY::SET_ENTITY_HEADING(unk_0x9B0761B4C3EB8BC7(), 169.2f);
 	}
-	HUD::DISPLAY_RADAR(false);
+	SYSTEM::SIN(0f);
 	PLAYER::SET_PLAYER_CONTROL(PLAYER::PLAYER_ID(), false, 0);
 	STREAMING::NEW_LOAD_SCENE_START_SPHERE(5312.996f, -5208.671f, 83.90526f, 10f, 0);
 	iVar0 = MISC::GET_GAME_TIMER() + 10000;
@@ -63,29 +63,29 @@ void __EntryFunction__()
 	AUDIO::START_AUDIO_SCENE("MISSION_FAILED_SCENE");
 	CAM::DO_SCREEN_FADE_IN(2500);
 	STREAMING::NEW_LOAD_SCENE_STOP();
-	HUD::REQUEST_ADDITIONAL_TEXT("NG_INSTALL", 0);
+	HUD::HAS_ADDITIONAL_TEXT_LOADED("NG_INSTALL", 0);
 	while (true)
 	{
-		if (!CAM::IS_SCREEN_FADED_IN())
+		if (!GRAPHICS::DRAW_SCALEFORM_MOVIE())
 		{
 			CAM::DO_SCREEN_FADE_IN(0);
 		}
-		GRAPHICS::DRAW_RECT(0.5f, 0.5f, 1f, 1f, 0, 0, 0, 255, false);
-		GRAPHICS::DRAW_RECT(0.5f, 0.5f, 0.8f, 0.8f, 20, 20, 20, 255, false);
+		GRAPHICS::SET_SCRIPT_GFX_DRAW_ORDER(0.5f, 0.5f, 1f, 1f, 0, 0, 0, 255, 0);
+		GRAPHICS::SET_SCRIPT_GFX_DRAW_ORDER(0.5f, 0.5f, 0.8f, 0.8f, 20, 20, 20, 255, 0);
 		HUD::SET_TEXT_SCALE(0.5f, 0.5f);
 		HUD::SET_TEXT_CENTRE(true);
-		if (SYSTEM::TIMERA() > 10000 && HUD::HAS_ADDITIONAL_TEXT_LOADED(0))
+		if (SYSTEM::TIMERA() > 10000 && HUD::REQUEST_ADDITIONAL_TEXT_FOR_DLC(0))
 		{
-			iLocal_0 = MISC::GET_RANDOM_INT_IN_RANGE(0, 5);
-			if ((iLocal_0 - iLocal_1) != 0)
+			bLocal_0 = NETWORK::_NETWORK_GET_ROS_PRIVILEGE_25(0, 5);
+			if ((bLocal_0 - bLocal_1) != 0)
 			{
-				iLocal_1 = iLocal_0;
+				bLocal_1 = bLocal_0;
 				SYSTEM::SETTIMERA(0);
 			}
 		}
 		else
 		{
-			switch (iLocal_0)
+			switch (bLocal_0)
 			{
 				case 0:
 					func_1(0.5f, 0.4f, "NG_INST_TT_1", 0);
@@ -108,7 +108,7 @@ void __EntryFunction__()
 					break;
 				}
 		}
-		HUD::DISABLE_FRONTEND_THIS_FRAME();
+		PAD::DISABLE_ALL_CONTROL_ACTIONS();
 		if (MISC::_HAS_ASYNC_INSTALL_FINISHED())
 		{
 			MISC::_CLEANUP_ASYNC_INSTALL();
@@ -118,9 +118,9 @@ void __EntryFunction__()
 	}
 }
 
-void func_1(float fParam0, float fParam1, char* sParam2, int iParam3)
+void func_1(char* sParam0, float fParam1, bool bParam2, int iParam3)
 {
-	HUD::BEGIN_TEXT_COMMAND_DISPLAY_TEXT(sParam2);
-	HUD::END_TEXT_COMMAND_DISPLAY_TEXT(fParam0, fParam1, iParam3);
+	NETWORK::GET_NUM_RESERVED_MISSION_OBJECTS(bParam2);
+	HUD::BEGIN_TEXT_COMMAND_DISPLAY_TEXT(sParam0, fParam1, iParam3);
 }
 

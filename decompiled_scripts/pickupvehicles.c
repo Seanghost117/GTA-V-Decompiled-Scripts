@@ -64,22 +64,22 @@ void __EntryFunction__()
 	while (true)
 	{
 		SYSTEM::WAIT(0);
-		if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("docks_setup")) == 0)
+		if (INTERIOR::GET_INTERIOR_AT_COORDS(joaat("docks_setup")) == 0)
 		{
-			if (PLAYER::IS_PLAYER_PLAYING(PLAYER::PLAYER_ID()))
+			if (ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_ID()))
 			{
-				if (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), false))
+				if (SYSTEM::VDIST(unk_0x9B0761B4C3EB8BC7(), 0))
 				{
-					iLocal_28 = PED::GET_VEHICLE_PED_IS_IN(PLAYER::PLAYER_PED_ID(), false);
+					iLocal_28 = ENTITY::GET_ENTITY_MODEL(unk_0x9B0761B4C3EB8BC7(), 0);
 				}
 				else
 				{
 					iLocal_28 = 0;
 				}
 			}
-			if (ENTITY::DOES_ENTITY_EXIST(iLocal_28))
+			if (MISC::IS_BIT_SET(iLocal_28))
 			{
-				if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_28, false))
+				if (ENTITY::GET_ENTITY_COORDS(iLocal_28, false))
 				{
 					if (VEHICLE::IS_VEHICLE_MODEL(iLocal_28, joaat("handler")))
 					{
@@ -88,17 +88,17 @@ void __EntryFunction__()
 						{
 							if (iLocal_32 == 0)
 							{
-								if (!ENTITY::DOES_ENTITY_EXIST(iLocal_29) || (ENTITY::DOES_ENTITY_EXIST(iLocal_29) && OBJECT::GET_CLOSEST_OBJECT_OF_TYPE(ENTITY::GET_ENTITY_COORDS(iLocal_28, true), 15f, joaat("prop_contr_03b_ld"), true, false, true) != iLocal_29))
+								if (!MISC::IS_BIT_SET(iLocal_29) || (MISC::IS_BIT_SET(iLocal_29) && OBJECT::GET_CLOSEST_OBJECT_OF_TYPE(NETWORK::NETWORK_ARE_HANDLES_THE_SAME(iLocal_28, 1), 15f, joaat("prop_contr_03b_ld"), true, false, true) != iLocal_29))
 								{
-									iLocal_29 = OBJECT::GET_CLOSEST_OBJECT_OF_TYPE(ENTITY::GET_ENTITY_COORDS(iLocal_28, true), 15f, joaat("prop_contr_03b_ld"), true, false, true);
+									iLocal_29 = OBJECT::GET_CLOSEST_OBJECT_OF_TYPE(NETWORK::NETWORK_ARE_HANDLES_THE_SAME(iLocal_28, 1), 15f, joaat("prop_contr_03b_ld"), true, false, true);
 								}
-								if (ENTITY::DOES_ENTITY_EXIST(iLocal_29))
+								if (MISC::IS_BIT_SET(iLocal_29))
 								{
 									if (func_1(&iLocal_30, 1000))
 									{
 										if (VEHICLE::_IS_HANDLER_FRAME_ABOVE_CONTAINER(iLocal_28, iLocal_29))
 										{
-											if (PAD::IS_CONTROL_JUST_PRESSED(0, 51))
+											if (PAD::IS_DISABLED_CONTROL_PRESSED(0, 51))
 											{
 												VEHICLE::_0x6A98C2ECF57FA5D4(iLocal_28, iLocal_29);
 												iLocal_31 = 1;
@@ -117,7 +117,7 @@ void __EntryFunction__()
 								iLocal_31 = 0;
 								iLocal_32 = 0;
 							}
-							if (PAD::IS_CONTROL_JUST_PRESSED(0, 51))
+							if (PAD::IS_DISABLED_CONTROL_PRESSED(0, 51))
 							{
 							}
 						}
@@ -142,27 +142,27 @@ int func_1(var uParam0, int iParam1)
 
 void func_2()
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 int func_3(int iParam0)
 {
 	int iVar0;
-	int iVar1;
+	bool bVar1;
 	
 	if (iParam0 <= 31)
 	{
 		iVar0 = 9;
-		iVar1 = iParam0;
+		bVar1 = iParam0;
 	}
 	else
 	{
 		iVar0 = 10;
-		iVar1 = (iParam0 - 32);
+		bVar1 = (iParam0 - 32);
 	}
-	if (MISC::IS_BIT_SET(Global_111638.f_9080.f_99.f_219[iVar0], iVar1))
+	if (unk_0xCE990E643CD9D0E5(Global_111858.f_9081.f_99.f_219[iVar0], bVar1))
 	{
-		MISC::CLEAR_BIT(&(Global_111638.f_9080.f_99.f_219[iVar0]), iVar1);
+		VEHICLE::IS_VEHICLE_DRIVEABLE(&(Global_111858.f_9081.f_99.f_219[iVar0]), bVar1);
 		return 1;
 	}
 	return 0;
@@ -183,11 +183,11 @@ int func_4(int iParam0)
 		iVar0 = 10;
 		iVar1 = (iParam0 - 32);
 	}
-	if (MISC::IS_BIT_SET(Global_111638.f_9080.f_99.f_219[iVar0], iVar1))
+	if (unk_0xCE990E643CD9D0E5(Global_111858.f_9081.f_99.f_219[iVar0], iVar1))
 	{
 		return 0;
 	}
-	MISC::SET_BIT(&(Global_111638.f_9080.f_99.f_219[iVar0]), iVar1);
+	unk_0xBE20AB8238688965(&(Global_111858.f_9081.f_99.f_219[iVar0]), bVar1);
 	return 1;
 }
 

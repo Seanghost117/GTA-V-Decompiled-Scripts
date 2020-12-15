@@ -76,7 +76,7 @@
 void __EntryFunction__()
 {
 	int iVar0;
-	int iVar1;
+	void fVar1;
 	char* sVar2;
 	struct<3> Var3;
 	int iVar4;
@@ -105,25 +105,25 @@ void __EntryFunction__()
 	iLocal_44 = 65;
 	iLocal_45 = 49;
 	iLocal_46 = 64;
-	iVar1 = joaat("carwash1");
+	fVar1 = joaat("carwash1");
 	sVar2 = "carwash1";
 	Var3 = { ScriptParam_50.f_1[0 /*3*/] };
-	if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("am_mp_carwash_launch")) > 1)
+	if (INTERIOR::GET_INTERIOR_AT_COORDS(joaat("am_mp_carwash_launch")) > 1)
 	{
-		SCRIPT::TERMINATE_THIS_THREAD();
+		ENTITY::STOP_ENTITY_ANIM();
 	}
-	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
+	if (MISC::SET_BIT())
 	{
 		MISC::NETWORK_SET_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
-		MISC::SET_THIS_SCRIPT_CAN_BE_PAUSED(false);
+		WEAPON::GET_WEAPONTYPE_GROUP(0);
 	}
 	else
 	{
-		SCRIPT::TERMINATE_THIS_THREAD();
+		ENTITY::STOP_ENTITY_ANIM();
 	}
 	if (Global_2621550)
 	{
-		if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(131838674) == 0)
+		if (INTERIOR::GET_INTERIOR_AT_COORDS(131838674) == 0)
 		{
 			SCRIPT::REQUEST_SCRIPT_WITH_NAME_HASH(131838674);
 			while (!SCRIPT::HAS_SCRIPT_WITH_NAME_HASH_LOADED(131838674))
@@ -132,9 +132,9 @@ void __EntryFunction__()
 			}
 			SYSTEM::START_NEW_SCRIPT_WITH_NAME_HASH_AND_ARGS(131838674, &ScriptParam_50, 23, 1424);
 		}
-		SCRIPT::TERMINATE_THIS_THREAD();
+		ENTITY::STOP_ENTITY_ANIM();
 	}
-	if (func_11(PLAYER::PLAYER_PED_ID()))
+	if (func_11(unk_0x9B0761B4C3EB8BC7()))
 	{
 	}
 	iVar4 = 0;
@@ -155,8 +155,8 @@ void __EntryFunction__()
 		sVar2 = "carwash2";
 	}
 	iVar0 = MISC::GET_GAME_TIMER();
-	iVar1 = MISC::GET_HASH_KEY(sVar2);
-	if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(iVar1) == 0)
+	fVar1 = AUDIO::SET_AMBIENT_ZONE_STATE_PERSISTENT(sVar2);
+	if (INTERIOR::GET_INTERIOR_AT_COORDS(fVar1) == 0)
 	{
 		SCRIPT::REQUEST_SCRIPT(sVar2);
 		while (!SCRIPT::HAS_SCRIPT_LOADED(sVar2))
@@ -165,7 +165,7 @@ void __EntryFunction__()
 			SYSTEM::WAIT(0);
 			if (MISC::GET_GAME_TIMER() > iVar0 + 20000)
 			{
-				SCRIPT::TERMINATE_THIS_THREAD();
+				ENTITY::STOP_ENTITY_ANIM();
 			}
 		}
 		if (SCRIPT::HAS_SCRIPT_LOADED(sVar2))
@@ -174,7 +174,7 @@ void __EntryFunction__()
 			SCRIPT::SET_SCRIPT_AS_NO_LONGER_NEEDED(sVar2);
 		}
 	}
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 Vector3 func_1(int iParam0)
@@ -182,14 +182,14 @@ Vector3 func_1(int iParam0)
 	int iVar0;
 	
 	iVar0 = iParam0;
-	return Global_31146[iVar0 /*23*/][0 /*3*/];
+	return Global_31346[iVar0 /*23*/][0 /*3*/];
 }
 
 int func_2(int iParam0)
 {
 	if (iParam0 != func_3())
 	{
-		return MISC::IS_BIT_SET(Global_1590535[iParam0 /*876*/].f_274.f_393.f_2, 16);
+		return unk_0xCE990E643CD9D0E5(Global_1590682[iParam0 /*883*/].f_274.f_393.f_2, 16);
 	}
 	return 0;
 }
@@ -203,27 +203,27 @@ int func_4(int iParam0)
 {
 	if (iParam0 != func_3())
 	{
-		return MISC::IS_BIT_SET(Global_1590535[iParam0 /*876*/].f_274.f_334, 29);
+		return unk_0xCE990E643CD9D0E5(Global_1590682[iParam0 /*883*/].f_274.f_334, 29);
 	}
 	return 0;
 }
 
-bool func_5()
+var func_5()
 {
-	return MISC::IS_BIT_SET(Global_1590535[PLAYER::PLAYER_ID() /*876*/].f_39.f_18, 0);
+	return unk_0xCE990E643CD9D0E5(Global_1590682[PLAYER::PLAYER_ID() /*883*/].f_39.f_18, 0);
 }
 
 bool func_6(int iParam0)
 {
-	return MISC::IS_BIT_SET(Global_1590535[iParam0 /*876*/].f_142, 6);
+	return unk_0xCE990E643CD9D0E5(Global_1590682[iParam0 /*883*/].f_142, 6);
 }
 
 int func_7()
 {
 	int iVar0;
 	
-	iVar0 = Global_2439138;
-	if (MISC::IS_BIT_SET(Global_1627020[iVar0 /*38*/].f_14, 0) && Global_1627020[iVar0 /*38*/].f_23 == 2)
+	iVar0 = Global_2440049;
+	if (unk_0xCE990E643CD9D0E5(Global_1627436[iVar0 /*90*/].f_14, 0) && Global_1627436[iVar0 /*90*/].f_23 == 2)
 	{
 		return 1;
 	}
@@ -242,7 +242,7 @@ int func_8(int iParam0, bool bParam1, bool bParam2)
 	if (!bParam2)
 	{
 	}
-	if (Global_1590535[iParam0 /*876*/] == -1)
+	if (Global_1590682[iParam0 /*883*/] == -1)
 	{
 		return 0;
 	}
@@ -254,17 +254,17 @@ bool func_9(int iParam0)
 	return func_10(iParam0);
 }
 
-bool func_10(int iParam0)
+var func_10(int iParam0)
 {
-	return MISC::IS_BIT_SET(Global_1590535[iParam0 /*876*/].f_13.f_1, 0);
+	return unk_0xCE990E643CD9D0E5(Global_1590682[iParam0 /*883*/].f_13.f_1, 0);
 }
 
 bool func_11(int iParam0)
 {
-	if (!ENTITY::DOES_ENTITY_EXIST(iParam0))
+	if (!MISC::IS_BIT_SET(iParam0))
 	{
 		return 0;
 	}
-	return !ENTITY::IS_ENTITY_DEAD(iParam0, false);
+	return !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iParam0, 0);
 }
 

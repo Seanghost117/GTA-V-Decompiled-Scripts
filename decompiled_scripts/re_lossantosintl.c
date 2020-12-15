@@ -112,10 +112,10 @@ void __EntryFunction__()
 	{
 		func_12();
 	}
-	iLocal_75 = PLAYER::PLAYER_PED_ID();
+	iLocal_75 = unk_0x9B0761B4C3EB8BC7();
 	while (true)
 	{
-		if (ENTITY::IS_ENTITY_DEAD(iLocal_75, false))
+		if (PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_75, 0))
 		{
 			iLocal_76 = 5;
 		}
@@ -143,7 +143,7 @@ void __EntryFunction__()
 				break;
 			
 			case 4:
-				if (Global_95672)
+				if (Global_95883)
 				{
 					iLocal_76 = 5;
 				}
@@ -166,9 +166,9 @@ void func_1()
 	iVar0 = 0;
 	while (iVar0 < 4)
 	{
-		if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[iVar0]))
+		if (MISC::IS_BIT_SET(iLocal_49[iVar0]))
 		{
-			if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[iVar0]) || (!ENTITY::IS_ENTITY_DEAD(iLocal_49[iVar0], false) && !ENTITY::IS_ENTITY_VISIBLE(iLocal_49[iVar0])))
+			if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[iVar0]) || (!PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[iVar0], 0) && !ENTITY::IS_ENTITY_VISIBLE(iLocal_49[iVar0])))
 			{
 				VEHICLE::DELETE_VEHICLE(&(iLocal_49[iVar0]));
 				PED::DELETE_PED(&(iLocal_51[iVar0]));
@@ -180,13 +180,13 @@ void func_1()
 					func_3(1);
 				}
 				func_2(&(iLocal_49[iVar0]), &(iLocal_51[iVar0]));
-				ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&(iLocal_49[iVar0]));
+				STREAMING::REMOVE_ANIM_DICT(&(iLocal_49[iVar0]));
 				ENTITY::SET_PED_AS_NO_LONGER_NEEDED(&(iLocal_51[iVar0]));
 			}
 		}
 		iVar0++;
 	}
-	if (ENTITY::DOES_ENTITY_EXIST(iLocal_50))
+	if (MISC::IS_BIT_SET(iLocal_50))
 	{
 		if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_50))
 		{
@@ -196,7 +196,7 @@ void func_1()
 		else
 		{
 			func_2(&iLocal_50, &iLocal_52);
-			ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&iLocal_50);
+			STREAMING::REMOVE_ANIM_DICT(&iLocal_50);
 			ENTITY::SET_PED_AS_NO_LONGER_NEEDED(&iLocal_52);
 		}
 	}
@@ -214,15 +214,15 @@ void func_1()
 
 void func_2(int iParam0, var uParam1)
 {
-	if (((ENTITY::DOES_ENTITY_EXIST(*iParam0) && ENTITY::DOES_ENTITY_EXIST(*uParam1)) && !ENTITY::IS_ENTITY_DEAD(*iParam0, false)) && !ENTITY::IS_ENTITY_DEAD(*uParam1, false))
+	if (((MISC::IS_BIT_SET(*iParam0) && MISC::IS_BIT_SET(*uParam1)) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(*iParam0, 0)) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(*uParam1, 0))
 	{
 		if (ENTITY::IS_ENTITY_IN_AIR(*iParam0))
 		{
 			if (VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(*iParam0))
 			{
-				if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+				if (!PED::IS_PED_IN_ANY_POLICE_VEHICLE(unk_0x9B0761B4C3EB8BC7(), 0))
 				{
-					TASK::TASK_PLANE_MISSION(*uParam1, *iParam0, 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 30f, 1.401298E-43f, 7.006492E-44f, 1);
+					TASK::TASK_PLANE_MISSION(*uParam1, *iParam0, 0, 0, NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 30f, 1.401298E-43f, 7.006492E-44f, 1);
 				}
 			}
 		}
@@ -233,42 +233,42 @@ void func_3(bool bParam0)
 {
 	if (bLocal_56)
 	{
-		if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[0]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+		if (MISC::IS_BIT_SET(iLocal_49[0]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[0], 0))
 		{
 			if (ENTITY::IS_ENTITY_IN_AIR(iLocal_49[0]))
 			{
 				if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[0]))
 				{
-					if ((!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(iLocal_51[0], false)) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+					if ((!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_51[0], 0)) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[0], 0))
 					{
-						TASK::TASK_PLANE_MISSION(iLocal_51[0], iLocal_49[0], 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
+						TASK::TASK_PLANE_MISSION(iLocal_51[0], iLocal_49[0], 0, 0, NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
 					}
 				}
 				else if (bParam0)
 				{
-					if ((!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(iLocal_51[0], false)) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+					if ((!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_51[0], 0)) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[0], 0))
 					{
-						TASK::TASK_PLANE_MISSION(iLocal_51[0], iLocal_49[0], 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
+						TASK::TASK_PLANE_MISSION(iLocal_51[0], iLocal_49[0], 0, 0, NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
 					}
 				}
 			}
 		}
-		if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[2]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+		if (MISC::IS_BIT_SET(iLocal_49[2]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[2], 0))
 		{
 			if (ENTITY::IS_ENTITY_IN_AIR(iLocal_49[2]))
 			{
 				if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[2]))
 				{
-					if ((!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(iLocal_51[2], false)) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+					if ((!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_51[2], 0)) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[2], 0))
 					{
-						TASK::TASK_PLANE_MISSION(iLocal_51[2], iLocal_49[2], 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
+						TASK::TASK_PLANE_MISSION(iLocal_51[2], iLocal_49[2], 0, 0, NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
 					}
 				}
 				else if (bParam0)
 				{
-					if ((!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(iLocal_51[2], false)) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+					if ((!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_51[2], 0)) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[2], 0))
 					{
-						TASK::TASK_PLANE_MISSION(iLocal_51[2], iLocal_49[2], 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
+						TASK::TASK_PLANE_MISSION(iLocal_51[2], iLocal_49[2], 0, 0, NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
 					}
 				}
 			}
@@ -288,9 +288,9 @@ void func_4()
 			Local_53[2 /*3*/] = { -1037.638f, -3316.12f, 23.2475f };
 			Local_53[3 /*3*/] = { 451.174f, -4009.46f, 135.1171f };
 			Local_54 = { -1612.174f, -2688.442f, 12.9444f };
-			if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+			if (!STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(unk_0x9B0761B4C3EB8BC7()))
 			{
-				if ((PED::IS_PED_IN_ANY_HELI(PLAYER::PLAYER_PED_ID()) || PED::IS_PED_IN_ANY_PLANE(PLAYER::PLAYER_PED_ID())) || PLAYER::IS_PLAYER_WANTED_LEVEL_GREATER(PLAYER::PLAYER_ID(), 0))
+				if ((PED::IS_PED_IN_ANY_HELI(unk_0x9B0761B4C3EB8BC7()) || PED::IS_PED_IN_ANY_PLANE(unk_0x9B0761B4C3EB8BC7())) || PLAYER::IS_PLAYER_WANTED_LEVEL_GREATER(PLAYER::PLAYER_ID(), 0))
 				{
 					bLocal_56 = false;
 				}
@@ -303,8 +303,8 @@ void func_4()
 			break;
 		
 		case 1:
-			STREAMING::REQUEST_MODEL(joaat("jet"));
-			STREAMING::REQUEST_MODEL(iLocal_62);
+			unk_0x78FCB2E22C41B9D5(joaat("jet"));
+			unk_0x78FCB2E22C41B9D5(iLocal_62);
 			VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportJetTakeOff");
 			VEHICLE::REQUEST_VEHICLE_RECORDING(103, "AirplaneLandingRedux");
 			VEHICLE::REQUEST_VEHICLE_RECORDING(101, "EastWestFlight");
@@ -316,14 +316,14 @@ void func_4()
 		case 2:
 			if (!bLocal_60)
 			{
-				if ((((((STREAMING::HAS_MODEL_LOADED(joaat("jet")) && STREAMING::HAS_MODEL_LOADED(iLocal_62)) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportJetTakeOff")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(103, "AirplaneLandingRedux")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportNew")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(104, "AirplaneLandingRedux")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "EastWestFlight"))
+				if ((((((ENTITY::DOES_ENTITY_EXIST(joaat("jet")) && ENTITY::DOES_ENTITY_EXIST(iLocal_62)) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportJetTakeOff")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(103, "AirplaneLandingRedux")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportNew")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(104, "AirplaneLandingRedux")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "EastWestFlight"))
 				{
 					bLocal_60 = true;
 				}
 				else
 				{
-					STREAMING::REQUEST_MODEL(joaat("jet"));
-					STREAMING::REQUEST_MODEL(iLocal_62);
+					unk_0x78FCB2E22C41B9D5(joaat("jet"));
+					unk_0x78FCB2E22C41B9D5(iLocal_62);
 					VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportJetTakeOff");
 					VEHICLE::REQUEST_VEHICLE_RECORDING(102, "AirportJetTakeOff");
 					VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportNew");
@@ -362,12 +362,12 @@ void func_4()
 			iVar0 = 0;
 			while (iVar0 < 4)
 			{
-				if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[iVar0]))
+				if (MISC::IS_BIT_SET(iLocal_49[iVar0]))
 				{
 					iLocal_51[iVar0] = PED::CREATE_PED_INSIDE_VEHICLE(iLocal_49[iVar0], 4, iLocal_62, -1, true, true);
 					ENTITY::SET_ENTITY_LOD_DIST(iLocal_49[iVar0], 1000);
 					VEHICLE::SET_VEHICLE_ENGINE_ON(iLocal_49[iVar0], true, true, false);
-					PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_51[iVar0], true);
+					PED::_0x2208438012482A1A(iLocal_51[iVar0], 1);
 				}
 				iVar0++;
 			}
@@ -376,7 +376,7 @@ void func_4()
 			func_8(&(iLocal_49[3]), &(iLocal_51[3]));
 			if (bLocal_56)
 			{
-				if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[0]))
+				if (MISC::IS_BIT_SET(iLocal_49[0]))
 				{
 					if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportJetTakeOff"))
 					{
@@ -395,7 +395,7 @@ void func_4()
 		case 4:
 			if (iLocal_59)
 			{
-				if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[3]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[3], false))
+				if (MISC::IS_BIT_SET(iLocal_49[3]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[3], 0))
 				{
 					if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[3]))
 					{
@@ -416,7 +416,7 @@ void func_4()
 					{
 						if (bLocal_56)
 						{
-							if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[0]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+							if (MISC::IS_BIT_SET(iLocal_49[0]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[0], 0))
 							{
 								if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[0]) && !CAM::IS_SPHERE_VISIBLE(Local_53[0 /*3*/], 50f))
 								{
@@ -435,7 +435,7 @@ void func_4()
 					}
 					if (iLocal_55)
 					{
-						if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[0]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+						if (MISC::IS_BIT_SET(iLocal_49[0]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[0], 0))
 						{
 							if (VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[0]))
 							{
@@ -450,7 +450,7 @@ void func_4()
 					break;
 				
 				case 1:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[1]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[1], false))
+					if (MISC::IS_BIT_SET(iLocal_49[1]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[1], 0))
 					{
 						if (bLocal_56)
 						{
@@ -493,7 +493,7 @@ void func_4()
 					break;
 				
 				case 2:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[1]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[1], false))
+					if (MISC::IS_BIT_SET(iLocal_49[1]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[1], 0))
 					{
 						if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[1]))
 						{
@@ -503,7 +503,7 @@ void func_4()
 					break;
 				
 				case 3:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[2]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+					if (MISC::IS_BIT_SET(iLocal_49[2]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[2], 0))
 					{
 						if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportNew"))
 						{
@@ -521,14 +521,14 @@ void func_4()
 					break;
 				
 				case 4:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[2]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+					if (MISC::IS_BIT_SET(iLocal_49[2]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[2], 0))
 					{
 						if (VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[2]))
 						{
 							fLocal_64 = VEHICLE::GET_POSITION_IN_RECORDING(iLocal_49[2]);
 						}
 					}
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[1]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[1], false))
+					if (MISC::IS_BIT_SET(iLocal_49[1]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[1], 0))
 					{
 						if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[1]))
 						{
@@ -541,7 +541,7 @@ void func_4()
 					}
 					if (fLocal_64 > 1100f)
 					{
-						if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[3]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[3], false))
+						if (MISC::IS_BIT_SET(iLocal_49[3]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[3], 0))
 						{
 							if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(104, "AirplaneLandingRedux"))
 							{
@@ -560,7 +560,7 @@ void func_4()
 					break;
 				
 				case 5:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[3]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[3], false))
+					if (MISC::IS_BIT_SET(iLocal_49[3]) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_49[3], 0))
 					{
 						if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[3]))
 						{
@@ -587,7 +587,7 @@ void func_6(var uParam0, var uParam1)
 	ENTITY::SET_ENTITY_VISIBLE(*uParam0, true, false);
 	ENTITY::SET_ENTITY_VISIBLE(*uParam1, true, false);
 	ENTITY::SET_ENTITY_COLLISION(*uParam0, true, false);
-	ENTITY::FREEZE_ENTITY_POSITION(*uParam0, false);
+	ENTITY::SET_ENTITY_COORDS(*uParam0, 0);
 }
 
 void func_7()
@@ -597,20 +597,20 @@ void func_7()
 	switch (iLocal_61)
 	{
 		case 0:
-			if (!ENTITY::DOES_ENTITY_EXIST(iLocal_50))
+			if (!MISC::IS_BIT_SET(iLocal_50))
 			{
 				iLocal_50 = VEHICLE::CREATE_VEHICLE(joaat("jet"), -65.3177f, 15.4603f, 703.106f, 0f, true, true, false);
 				ENTITY::SET_ENTITY_LOD_DIST(iLocal_50, 1000);
 				VEHICLE::SET_VEHICLE_ENGINE_ON(iLocal_50, true, true, false);
 				VEHICLE::_0x279D50DE5652D935(iLocal_50, false);
 				iLocal_52 = PED::CREATE_PED_INSIDE_VEHICLE(iLocal_50, 4, iLocal_62, -1, true, true);
-				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_52, true);
+				PED::_0x2208438012482A1A(iLocal_52, 1);
 				iLocal_61 = 1;
 			}
 			break;
 		
 		case 1:
-			if (ENTITY::DOES_ENTITY_EXIST(iLocal_50) && !ENTITY::IS_ENTITY_DEAD(iLocal_50, false))
+			if (MISC::IS_BIT_SET(iLocal_50) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_50, 0))
 			{
 				if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "EastWestFlight"))
 				{
@@ -624,15 +624,15 @@ void func_7()
 			break;
 		
 		case 2:
-			if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+			if (!PED::IS_PED_IN_ANY_POLICE_VEHICLE(unk_0x9B0761B4C3EB8BC7(), 0))
 			{
-				Var0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
+				Var0 = { NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 1) };
 			}
-			if (ENTITY::DOES_ENTITY_EXIST(iLocal_50) && !ENTITY::IS_ENTITY_DEAD(iLocal_50, false))
+			if (MISC::IS_BIT_SET(iLocal_50) && !PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_50, 0))
 			{
 				if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_50))
 				{
-					if ((ENTITY::IS_ENTITY_OCCLUDED(iLocal_50) && !CAM::IS_SPHERE_VISIBLE(-1602.086f, -2674.039f, 12.9444f, 50f)) && SYSTEM::VDIST2(Var0, ENTITY::GET_ENTITY_COORDS(iLocal_50, true)) > 62500f)
+					if ((ENTITY::IS_ENTITY_OCCLUDED(iLocal_50) && !CAM::IS_SPHERE_VISIBLE(-1602.086f, -2674.039f, 12.9444f, 50f)) && SYSTEM::VDIST2(Var0, NETWORK::NETWORK_ARE_HANDLES_THE_SAME(iLocal_50, 1)) > 62500f)
 					{
 						iLocal_61 = 1;
 					}
@@ -647,7 +647,7 @@ void func_8(var uParam0, var uParam1)
 	ENTITY::SET_ENTITY_VISIBLE(*uParam0, false, false);
 	ENTITY::SET_ENTITY_VISIBLE(*uParam1, false, false);
 	ENTITY::SET_ENTITY_COLLISION(*uParam0, false, false);
-	ENTITY::FREEZE_ENTITY_POSITION(*uParam0, true);
+	ENTITY::SET_ENTITY_COORDS(*uParam0, 1);
 }
 
 void func_9()
@@ -667,7 +667,7 @@ void func_12()
 {
 	func_1();
 	func_13();
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 void func_13()
@@ -675,22 +675,22 @@ void func_13()
 	struct<3> Var0;
 	struct<3> Var1;
 	struct<3> Var2;
-	float fVar3;
+	bool bVar3;
 	
-	if (ENTITY::DOES_ENTITY_EXIST(iLocal_67))
+	if (MISC::IS_BIT_SET(iLocal_67))
 	{
 		if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_67))
 		{
 			VEHICLE::DELETE_VEHICLE(&iLocal_67);
 		}
-		else if (!ENTITY::IS_ENTITY_DEAD(iLocal_67, false) && !PED::IS_PED_INJURED(iLocal_68))
+		else if (!PED::IS_PED_IN_ANY_POLICE_VEHICLE(iLocal_67, 0) && !STATS::_GET_PACKED_TITLE_UPDATE_INT_STAT_KEY(iLocal_68))
 		{
 			VEHICLE::STOP_PLAYBACK_RECORDED_VEHICLE(iLocal_67);
 			PED::SET_PED_KEEP_TASK(iLocal_68, true);
-			Var0 = { ENTITY::GET_ENTITY_COORDS(iLocal_67, true) };
-			fVar3 = ENTITY::GET_ENTITY_HEADING(iLocal_67);
+			Var0 = { NETWORK::NETWORK_ARE_HANDLES_THE_SAME(iLocal_67, 1) };
+			bVar3 = ENTITY::IS_ENTITY_IN_WATER(iLocal_67);
 			Var1 = { 0f, 500f, 50f };
-			Var2 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(Var0, fVar3, Var1) };
+			Var2 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(Var0, bVar3, Var1) };
 			TASK::TASK_HELI_MISSION(iLocal_68, iLocal_67, 0, 0, Var2, 4, 50f, -1f, 0f, 100, 50, -1082130432, 0);
 		}
 	}

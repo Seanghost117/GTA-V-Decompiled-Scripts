@@ -41,7 +41,7 @@ void __EntryFunction__()
 	}
 	func_24(Var0);
 	bLocal_4 = func_4();
-	Local_5 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
+	Local_5 = { NETWORK::NETWORK_ARE_HANDLES_THE_SAME(unk_0x9B0761B4C3EB8BC7(), 0) };
 	func_1();
 	while (true)
 	{
@@ -71,9 +71,9 @@ void func_1()
 			if (func_2(Var3, 0f, 0f, 0f, 0))
 			{
 				iVar4 = 0;
-				MISC::SET_BIT(&iVar4, 1);
-				MISC::SET_BIT(&iVar4, 4);
-				MISC::SET_BIT(&iVar4, 3);
+				unk_0xBE20AB8238688965(&iVar4, 1);
+				unk_0xBE20AB8238688965(&iVar4, 4);
+				unk_0xBE20AB8238688965(&iVar4, 3);
 				if (iVar1 == joaat("pickup_money_case"))
 				{
 					if (bLocal_4)
@@ -103,8 +103,8 @@ void func_1()
 			else
 			{
 				iVar4 = 0;
-				MISC::SET_BIT(&iVar4, 1);
-				MISC::SET_BIT(&iVar4, 4);
+				unk_0xBE20AB8238688965(&iVar4, 1);
+				unk_0xBE20AB8238688965(&iVar4, 4);
 				if (iVar1 == joaat("pickup_money_case"))
 				{
 					if (bLocal_4)
@@ -974,16 +974,16 @@ int func_3(int iParam0, var uParam1, var uParam2, var uParam3, var uParam4)
 
 int func_4()
 {
-	if (Global_2462098 == -15)
+	if (Global_2463669 == -15)
 	{
-		Global_2462098 = func_23();
-		func_15(&Global_2462098, 0, 0, 0, 1, 0, 0);
+		Global_2463669 = func_23();
+		func_15(&Global_2463669, 0, 0, 0, 1, 0, 0);
 		return 1;
 	}
-	if (func_5(func_23(), Global_2462098))
+	if (func_5(func_23(), Global_2463669))
 	{
-		Global_2462098 = func_23();
-		func_15(&Global_2462098, 0, 0, 0, 1, 0, 0);
+		Global_2463669 = func_23();
+		func_15(&Global_2463669, 0, 0, 0, 1, 0, 0);
 		return 1;
 	}
 	return 0;
@@ -1084,7 +1084,7 @@ int func_10(int iParam0)
 
 var func_11(int iParam0)
 {
-	return (SYSTEM::SHIFT_RIGHT(iParam0, 26) & 31 * func_12(MISC::IS_BIT_SET(iParam0, 31), -1, 1)) + 2011;
+	return (SYSTEM::SHIFT_RIGHT(iParam0, 26) & 31 * func_12(unk_0xCE990E643CD9D0E5(iParam0, 31), -1, 1)) + 2011;
 }
 
 int func_12(bool bParam0, int iParam1, int iParam2)
@@ -1362,12 +1362,12 @@ int func_23()
 {
 	var uVar0;
 	
-	func_22(&uVar0, CLOCK::GET_CLOCK_SECONDS());
-	func_21(&uVar0, CLOCK::GET_CLOCK_MINUTES());
-	func_20(&uVar0, CLOCK::GET_CLOCK_HOURS());
-	func_18(&uVar0, CLOCK::GET_CLOCK_DAY_OF_MONTH());
-	func_19(&uVar0, CLOCK::GET_CLOCK_MONTH());
-	func_17(&uVar0, CLOCK::GET_CLOCK_YEAR());
+	func_22(&uVar0, CLOCK::GET_CLOCK_MINUTES());
+	func_21(&uVar0, CLOCK::GET_CLOCK_HOURS());
+	func_20(&uVar0, CLOCK::GET_CLOCK_DAY_OF_MONTH());
+	func_18(&uVar0, CLOCK::GET_CLOCK_MONTH());
+	func_19(&uVar0, CLOCK::GET_CLOCK_YEAR());
+	func_17(&uVar0, SYSTEM::SHIFT_LEFT());
 	return uVar0;
 }
 
@@ -1408,20 +1408,20 @@ int func_25(struct<3> Param0, struct<3> Param1, float fParam2, bool bParam3)
 	}
 	if (!bParam3)
 	{
-		if (MISC::ABSF((Param0.x - Param1.x)) <= fParam2)
+		if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.x - Param1.x)) <= fParam2)
 		{
-			if (MISC::ABSF((Param0.f_1 - Param1.f_1)) <= fParam2)
+			if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.f_1 - Param1.f_1)) <= fParam2)
 			{
-				if (MISC::ABSF((Param0.f_2 - Param1.f_2)) <= fParam2)
+				if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.f_2 - Param1.f_2)) <= fParam2)
 				{
 					return 1;
 				}
 			}
 		}
 	}
-	else if (MISC::ABSF((Param0.x - Param1.x)) <= fParam2)
+	else if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.x - Param1.x)) <= fParam2)
 	{
-		if (MISC::ABSF((Param0.f_1 - Param1.f_1)) <= fParam2)
+		if (ENTITY::IS_ENTITY_PLAYING_ANIM((Param0.f_1 - Param1.f_1)) <= fParam2)
 		{
 			return 1;
 		}
@@ -1432,7 +1432,7 @@ int func_25(struct<3> Param0, struct<3> Param1, float fParam2, bool bParam3)
 void func_26()
 {
 	func_27();
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
 void func_27()

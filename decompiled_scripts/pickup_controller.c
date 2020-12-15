@@ -117,15 +117,15 @@ void func_3(int iParam0, int iParam1, struct<3> Param2, bool bParam3, bool bPara
 	int iVar0;
 	
 	iVar0 = 0;
-	MISC::SET_BIT(&iVar0, 2);
-	MISC::SET_BIT(&iVar0, 1);
+	unk_0xBE20AB8238688965(&iVar0, 2);
+	unk_0xBE20AB8238688965(&iVar0, 1);
 	if (bParam4)
 	{
-		MISC::SET_BIT(&iVar0, 4);
+		unk_0xBE20AB8238688965(&iVar0, 4);
 	}
 	if (bParam3)
 	{
-		MISC::SET_BIT(&iVar0, 3);
+		unk_0xBE20AB8238688965(&iVar0, 3);
 	}
 	iLocal_29[iParam0] = OBJECT::CREATE_PICKUP_ROTATE(iParam1, func_4(iParam0), Param2, iVar0, -1, 2, true, 0);
 	OBJECT::SET_PICKUP_REGENERATION_TIME(iLocal_29[iParam0], 600000);
@@ -148,7 +148,7 @@ int func_5(int iParam0)
 	{
 		return 0;
 	}
-	return Global_111638.f_9080.f_330[iParam0 /*6*/];
+	return Global_111858.f_9081.f_330[iParam0 /*6*/];
 }
 
 void func_6()
@@ -164,15 +164,15 @@ void func_7(int iParam0, int iParam1, struct<3> Param2, bool bParam3, bool bPara
 	int iVar0;
 	
 	iVar0 = 0;
-	MISC::SET_BIT(&iVar0, 2);
-	MISC::SET_BIT(&iVar0, 1);
+	unk_0xBE20AB8238688965(&iVar0, 2);
+	unk_0xBE20AB8238688965(&iVar0, 1);
 	if (bParam4)
 	{
-		MISC::SET_BIT(&iVar0, 4);
+		unk_0xBE20AB8238688965(&iVar0, 4);
 	}
 	if (bParam3)
 	{
-		MISC::SET_BIT(&iVar0, 3);
+		unk_0xBE20AB8238688965(&iVar0, 3);
 	}
 	iLocal_27[iParam0] = OBJECT::CREATE_PICKUP_ROTATE(iParam1, func_8(iParam0), Param2, iVar0, -1, 2, true, 0);
 	OBJECT::SET_PICKUP_REGENERATION_TIME(iLocal_27[iParam0], 600000);
@@ -191,43 +191,43 @@ Vector3 func_8(int iParam0)
 
 int func_9()
 {
-	int iVar0;
+	bool bVar0;
 	
-	if (NETWORK::NETWORK_IS_SIGNED_IN())
+	if (VEHICLE::IS_THIS_MODEL_A_BIKE())
 	{
-		if (NETWORK::NETWORK_HAS_VALID_ROS_CREDENTIALS())
+		if (VEHICLE::IS_THIS_MODEL_A_QUADBIKE())
 		{
-			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
+			if (MONEY::NETWORK_REFUND_CASH())
 			{
-				STATS::STAT_GET_INT(joaat("SP_UNLOCK_EXCLUS_CONTENT"), &iVar0, -1);
-				MISC::SET_BIT(&iVar0, 2);
-				MISC::SET_BIT(&iVar0, 4);
-				MISC::SET_BIT(&iVar0, 6);
-				MISC::SET_BIT(&Global_25, 2);
-				MISC::SET_BIT(&Global_25, 4);
-				MISC::SET_BIT(&Global_25, 6);
-				STATS::STAT_SET_INT(joaat("SP_UNLOCK_EXCLUS_CONTENT"), iVar0, true);
-				if (MISC::ARE_PROFILE_SETTINGS_VALID())
+				STATS::STAT_GET_INT(joaat("SP_UNLOCK_EXCLUS_CONTENT"), &bVar0, -1);
+				unk_0xBE20AB8238688965(&bVar0, 2);
+				unk_0xBE20AB8238688965(&bVar0, 4);
+				unk_0xBE20AB8238688965(&bVar0, 6);
+				unk_0xBE20AB8238688965(&Global_25, 2);
+				unk_0xBE20AB8238688965(&Global_25, 4);
+				unk_0xBE20AB8238688965(&Global_25, 6);
+				NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT(joaat("SP_UNLOCK_EXCLUS_CONTENT"), bVar0, 1);
+				if (STATS::STAT_SET_MASKED_INT())
 				{
-					iVar0 = MISC::GET_PROFILE_SETTING(866);
-					MISC::SET_BIT(&iVar0, 0);
-					STATS::_SET_HAS_CONTENT_UNLOCKS_FLAGS(iVar0);
+					bVar0 = VEHICLE::IS_THIS_MODEL_A_CAR(866);
+					unk_0xBE20AB8238688965(&bVar0, 0);
+					MONEY::NETWORK_CAN_SPEND_MONEY(bVar0);
 				}
 				return 1;
 			}
 		}
 	}
-	if (Global_150472 == 2)
+	if (Global_150693 == 2)
 	{
 		return 1;
 	}
-	else if (Global_150472 == 3)
+	else if (Global_150693 == 3)
 	{
 		return 0;
 	}
-	if (MISC::ARE_PROFILE_SETTINGS_VALID())
+	if (STATS::STAT_SET_MASKED_INT())
 	{
-		if (MISC::IS_BIT_SET(MISC::GET_PROFILE_SETTING(866), 0))
+		if (unk_0xCE990E643CD9D0E5(VEHICLE::IS_THIS_MODEL_A_CAR(866), 0))
 		{
 			return 1;
 		}
@@ -255,25 +255,25 @@ void func_11(int iParam0, int iParam1, struct<3> Param2, bool bParam3, bool bPar
 	iVar0 = 0;
 	if (iParam1 == joaat("pickup_armour_standard"))
 	{
-		MISC::SET_BIT(&iVar0, 2);
-		MISC::SET_BIT(&iVar0, 4);
-		MISC::SET_BIT(&iVar0, 1);
+		unk_0xBE20AB8238688965(&iVar0, 2);
+		unk_0xBE20AB8238688965(&iVar0, 4);
+		unk_0xBE20AB8238688965(&iVar0, 1);
 		if (bParam3)
 		{
-			MISC::SET_BIT(&iVar0, 3);
+			unk_0xBE20AB8238688965(&iVar0, 3);
 		}
 	}
 	else
 	{
-		MISC::SET_BIT(&iVar0, 2);
-		MISC::SET_BIT(&iVar0, 1);
+		unk_0xBE20AB8238688965(&iVar0, 2);
+		unk_0xBE20AB8238688965(&iVar0, 1);
 		if (bParam4)
 		{
-			MISC::SET_BIT(&iVar0, 4);
+			unk_0xBE20AB8238688965(&iVar0, 4);
 		}
 		if (bParam3)
 		{
-			MISC::SET_BIT(&iVar0, 3);
+			unk_0xBE20AB8238688965(&iVar0, 3);
 		}
 	}
 	iLocal_24[iParam0] = OBJECT::CREATE_PICKUP_ROTATE(iParam1, func_12(iParam0), Param2, iVar0, -1, 2, true, 0);
@@ -329,66 +329,66 @@ int func_13(int iParam0)
 	{
 		return 0;
 	}
-	return Global_111638.f_9080.f_99.f_58[iParam0];
+	return Global_111858.f_9081.f_99.f_58[iParam0];
 }
 
 void func_14()
 {
-	switch (Global_31011)
+	switch (Global_31211)
 	{
 		case 0:
 			break;
 		
 		case 1:
-			switch (Global_31012)
+			switch (Global_31212)
 			{
 				case 0:
-					if (OBJECT::DOES_PICKUP_EXIST(iLocal_20[Global_31013]) && OBJECT::DOES_PICKUP_OBJECT_EXIST(iLocal_20[Global_31013]))
+					if (OBJECT::DOES_PICKUP_EXIST(iLocal_20[Global_31213]) && OBJECT::DOES_PICKUP_OBJECT_EXIST(iLocal_20[Global_31213]))
 					{
-						Global_31014 = 0;
+						Global_31214 = 0;
 					}
 					else
 					{
-						Global_31014 = 1;
+						Global_31214 = 1;
 					}
 					break;
 				
 				case 1:
-					if (OBJECT::DOES_PICKUP_EXIST(iLocal_22[Global_31013]) && OBJECT::DOES_PICKUP_OBJECT_EXIST(iLocal_22[Global_31013]))
+					if (OBJECT::DOES_PICKUP_EXIST(iLocal_22[Global_31213]) && OBJECT::DOES_PICKUP_OBJECT_EXIST(iLocal_22[Global_31213]))
 					{
-						Global_31014 = 0;
+						Global_31214 = 0;
 					}
 					else
 					{
-						Global_31014 = 1;
+						Global_31214 = 1;
 					}
 					break;
 				
 				case 2:
-					if (OBJECT::DOES_PICKUP_EXIST(iLocal_23[Global_31013]) && OBJECT::DOES_PICKUP_OBJECT_EXIST(iLocal_23[Global_31013]))
+					if (OBJECT::DOES_PICKUP_EXIST(iLocal_23[Global_31213]) && OBJECT::DOES_PICKUP_OBJECT_EXIST(iLocal_23[Global_31213]))
 					{
-						Global_31014 = 0;
+						Global_31214 = 0;
 					}
 					else
 					{
-						Global_31014 = 1;
+						Global_31214 = 1;
 					}
 					break;
 				
 				case 3:
-					Global_31011 = 3;
+					Global_31211 = 3;
 					break;
 			}
-			Global_31011 = 2;
+			Global_31211 = 2;
 			break;
 		
 		case 2:
 			break;
 		
 		case 3:
-			Global_31013 = 0;
-			Global_31014 = 0;
-			Global_31011 = 0;
+			Global_31213 = 0;
+			Global_31214 = 0;
+			Global_31211 = 0;
 			break;
 	}
 }
@@ -524,7 +524,7 @@ void func_22()
 
 bool func_23(int iParam0)
 {
-	return Global_41431 == iParam0;
+	return Global_41631 == iParam0;
 }
 
 void func_24()
@@ -647,15 +647,15 @@ void func_26(int iParam0, int iParam1, struct<3> Param2, bool bParam3, bool bPar
 	int iVar0;
 	
 	iVar0 = 0;
-	MISC::SET_BIT(&iVar0, 2);
-	MISC::SET_BIT(&iVar0, 1);
+	unk_0xBE20AB8238688965(&iVar0, 2);
+	unk_0xBE20AB8238688965(&iVar0, 1);
 	if (bParam5)
 	{
-		MISC::SET_BIT(&iVar0, 4);
+		unk_0xBE20AB8238688965(&iVar0, 4);
 	}
 	if (bParam3)
 	{
-		MISC::SET_BIT(&iVar0, 3);
+		unk_0xBE20AB8238688965(&iVar0, 3);
 	}
 	iLocal_23[iParam0] = OBJECT::CREATE_PICKUP_ROTATE(iParam1, func_28(iParam0, 0), Param2, iVar0, -1, 2, true, 0);
 	OBJECT::SET_PICKUP_REGENERATION_TIME(iLocal_23[iParam0], 600000);
@@ -1494,13 +1494,13 @@ void func_30(int iParam0, struct<3> Param1, bool bParam2, bool bParam3)
 	int iVar0;
 	
 	iVar0 = 0;
-	MISC::SET_BIT(&iVar0, 2);
-	MISC::SET_BIT(&iVar0, 1);
-	MISC::SET_BIT(&iVar0, 8);
-	MISC::SET_BIT(&iVar0, 4);
+	unk_0xBE20AB8238688965(&iVar0, 2);
+	unk_0xBE20AB8238688965(&iVar0, 1);
+	unk_0xBE20AB8238688965(&iVar0, 8);
+	unk_0xBE20AB8238688965(&iVar0, 4);
 	if (!bParam2)
 	{
-		MISC::SET_BIT(&iVar0, 3);
+		unk_0xBE20AB8238688965(&iVar0, 3);
 	}
 	iLocal_22[iParam0] = OBJECT::CREATE_PICKUP_ROTATE(joaat("pickup_health_standard"), func_32(iParam0, 0), Param1, iVar0, -1, 2, true, 0);
 	OBJECT::SET_PICKUP_REGENERATION_TIME(iLocal_22[iParam0], 600000);
@@ -2301,13 +2301,13 @@ void func_34(int iParam0, struct<3> Param1, bool bParam2)
 	int iVar0;
 	
 	iVar0 = 0;
-	MISC::SET_BIT(&iVar0, 2);
-	MISC::SET_BIT(&iVar0, 4);
-	MISC::SET_BIT(&iVar0, 1);
-	MISC::SET_BIT(&iVar0, 8);
+	unk_0xBE20AB8238688965(&iVar0, 2);
+	unk_0xBE20AB8238688965(&iVar0, 4);
+	unk_0xBE20AB8238688965(&iVar0, 1);
+	unk_0xBE20AB8238688965(&iVar0, 8);
 	if (bParam2)
 	{
-		MISC::SET_BIT(&iVar0, 3);
+		unk_0xBE20AB8238688965(&iVar0, 3);
 	}
 	iLocal_21[iParam0] = OBJECT::CREATE_PICKUP_ROTATE(joaat("pickup_weapon_petrolcan"), func_35(iParam0), Param1, iVar0, -1, 2, true, 0);
 	OBJECT::SET_PICKUP_REGENERATION_TIME(iLocal_21[iParam0], 600000);
@@ -2450,16 +2450,16 @@ void func_37(int iParam0, struct<3> Param1, bool bParam2, bool bParam3, bool bPa
 	int iVar0;
 	
 	iVar0 = 0;
-	MISC::SET_BIT(&iVar0, 2);
-	MISC::SET_BIT(&iVar0, 4);
-	MISC::SET_BIT(&iVar0, 1);
+	unk_0xBE20AB8238688965(&iVar0, 2);
+	unk_0xBE20AB8238688965(&iVar0, 4);
+	unk_0xBE20AB8238688965(&iVar0, 1);
 	if (bParam4)
 	{
-		MISC::SET_BIT(&iVar0, 8);
+		unk_0xBE20AB8238688965(&iVar0, 8);
 	}
 	if (bParam2)
 	{
-		MISC::SET_BIT(&iVar0, 3);
+		unk_0xBE20AB8238688965(&iVar0, 3);
 	}
 	iLocal_20[iParam0] = OBJECT::CREATE_PICKUP_ROTATE(joaat("pickup_armour_standard"), func_39(iParam0, 0), Param1, iVar0, -1, 2, true, 0);
 	OBJECT::SET_PICKUP_REGENERATION_TIME(iLocal_20[iParam0], 600000);
@@ -2879,6 +2879,6 @@ void func_40()
 	{
 		func_16();
 	}
-	SCRIPT::TERMINATE_THIS_THREAD();
+	ENTITY::STOP_ENTITY_ANIM();
 }
 
