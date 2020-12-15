@@ -48,7 +48,7 @@
 
 void __EntryFunction__()
 {
-	int iVar0;
+	var uVar0;
 	
 	iLocal_2 = 1;
 	iLocal_3 = 134;
@@ -74,11 +74,11 @@ void __EntryFunction__()
 	iLocal_40 = 65;
 	iLocal_41 = 49;
 	iLocal_42 = 64;
-	iVar0 = PLAYER::GET_PLAYER_PED(PLAYER::GET_PLAYER_INDEX());
-	if (!ENTITY::IS_ENTITY_DEAD(iVar0, false))
+	uVar0 = unk_0x1FA7B77001D60F9D(unk_0x2639A2323BEA8CC6());
+	if (!unk_0xA59F96B50B97E63C(uVar0, 0))
 	{
-		ENTITY::SET_ENTITY_COORDS(iVar0, 2119.159f, 4813.522f, 40.2223f, true, false, false, true);
-		ENTITY::SET_ENTITY_HEADING(iVar0, 225.2837f);
+		unk_0x03D382CB0B44E2FC(uVar0, 2119.159f, 4813.522f, 40.2223f, 1, 0, 0, 1);
+		unk_0xE922BAA80E8F9324(uVar0, 225.2837f);
 	}
 	func_1(19, 0);
 }
@@ -89,7 +89,7 @@ void func_1(int iParam0, int iParam1)
 	{
 		return;
 	}
-	Global_111638.f_8608[iParam0] = 1;
-	Global_111638.f_8608.f_236[iParam0] = (MISC::GET_GAME_TIMER() + iParam1);
+	Global_111858.f_8609[iParam0] = 1;
+	Global_111858.f_8609.f_236[iParam0] = (unk_0x578C4EF320340AF7() + iParam1);
 }
 

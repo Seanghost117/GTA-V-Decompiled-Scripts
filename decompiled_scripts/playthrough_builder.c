@@ -1,8 +1,8 @@
 void __EntryFunction__()
 {
-	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(2))
+	if (unk_0xED06FD5709A59F02(2))
 	{
-		SCRIPT::TERMINATE_THIS_THREAD();
+		unk_0xD39E529EBE5DB04F();
 	}
 }
 

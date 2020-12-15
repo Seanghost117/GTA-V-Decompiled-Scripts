@@ -117,14 +117,14 @@ void func_2()
 	var uVar3;
 	
 	iVar0 = 0;
-	while (iVar0 < SCRIPT::GET_NUMBER_OF_EVENTS(2))
+	while (iVar0 < unk_0x2AC1C68C7CCA90E5(2))
 	{
-		iVar1 = SCRIPT::GET_EVENT_AT_INDEX(2, iVar0);
+		iVar1 = unk_0x39BE1B4CEB4DAEC8(2, iVar0);
 		if (func_10(iVar1))
 		{
 			func_9(&Var2);
 			func_8(2, iVar0, iVar1, &Var2);
-			Var2.f_1 = (MISC::GET_FRAME_COUNT() - 1);
+			Var2.f_1 = (unk_0xD3137A576BE9EC5C() - 1);
 			Var2 = iVar1;
 			if (!func_7(&Var2, &uVar3))
 			{
@@ -141,28 +141,28 @@ void func_3(int iParam0)
 	int iVar0;
 	
 	iVar0 = *iParam0;
-	if (((func_5() && func_4(iVar0)) && iVar0 != 244) && NETWORK::NETWORK_CAN_BAIL())
+	if (((func_5() && func_4(iVar0)) && iVar0 != 245) && unk_0x5ADB83307B1D7E0D())
 	{
-		NETWORK::NETWORK_BAIL(0, 1, 0);
+		unk_0xD60DE66E028FF0BE(0, 1, 0);
 	}
 }
 
 bool func_4(int iParam0)
 {
-	return (((iParam0 == 245 || iParam0 == 246) || iParam0 == 247) || iParam0 == 244);
+	return (((iParam0 == 246 || iParam0 == 247) || iParam0 == 248) || iParam0 == 245);
 }
 
 bool func_5()
 {
-	return Global_1590535[PLAYER::PLAYER_ID() /*876*/].f_196 != 0;
+	return Global_1590682[unk_0x460153A63B9477BC() /*883*/].f_196 != 0;
 }
 
 int func_6(int iParam0)
 {
-	if (Global_31045.f_61 < 20)
+	if (Global_31245.f_61 < 20)
 	{
-		Global_31045[Global_31045.f_61 /*3*/] = { *iParam0 };
-		Global_31045.f_61++;
+		Global_31245[Global_31245.f_61 /*3*/] = { *iParam0 };
+		Global_31245.f_61++;
 		return 1;
 	}
 	return 0;
@@ -172,9 +172,9 @@ int func_7(int iParam0, var uParam1)
 {
 	*uParam1 = 0;
 	*uParam1 = 0;
-	while (*uParam1 < Global_31045.f_61)
+	while (*uParam1 < Global_31245.f_61)
 	{
-		if (Global_31045[*uParam1 /*3*/] == *iParam0 && Global_31045[*uParam1 /*3*/].f_2 == iParam0->f_2)
+		if (Global_31245[*uParam1 /*3*/] == *iParam0 && Global_31245[*uParam1 /*3*/].f_2 == iParam0->f_2)
 		{
 			return 1;
 		}
@@ -187,9 +187,9 @@ void func_8(int iParam0, int iParam1, int iParam2, var uParam3)
 {
 	var uVar0;
 	
-	if (((iParam2 == 244 || iParam2 == 245) || iParam2 == 246) || iParam2 == 247)
+	if (((iParam2 == 245 || iParam2 == 246) || iParam2 == 247) || iParam2 == 248)
 	{
-		if (SCRIPT::GET_EVENT_DATA(iParam0, iParam1, &uVar0, 1))
+		if (unk_0x477FAFFE21935947(iParam0, iParam1, &uVar0, 1))
 		{
 			uParam3->f_2 = uVar0;
 		}
@@ -215,6 +215,6 @@ int func_11()
 
 void func_12()
 {
-	MISC::NETWORK_SET_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
+	unk_0xDB4E5F36ED3505EE();
 }
 

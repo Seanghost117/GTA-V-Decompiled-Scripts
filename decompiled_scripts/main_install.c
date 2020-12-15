@@ -8,75 +8,75 @@ void __EntryFunction__()
 	int iVar0;
 	
 	iLocal_0 = -1;
-	MISC::NETWORK_SET_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
-	STREAMING::REQUEST_IPL("prologue06_int");
-	STREAMING::REQUEST_IPL("prologue01");
-	STREAMING::REQUEST_IPL("prologue02");
-	STREAMING::REQUEST_IPL("prologue03");
-	STREAMING::REQUEST_IPL("prologue04");
-	STREAMING::REQUEST_IPL("prologue05");
-	STREAMING::REQUEST_IPL("prologue06");
-	STREAMING::REQUEST_IPL("prologuerd");
-	STREAMING::REQUEST_IPL("Prologue01c");
-	STREAMING::REQUEST_IPL("Prologue01d");
-	STREAMING::REQUEST_IPL("Prologue01e");
-	STREAMING::REQUEST_IPL("Prologue01f");
-	STREAMING::REQUEST_IPL("Prologue01g");
-	STREAMING::REQUEST_IPL("prologue01h");
-	STREAMING::REQUEST_IPL("prologue01i");
-	STREAMING::REQUEST_IPL("prologue01j");
-	STREAMING::REQUEST_IPL("prologue01k");
-	STREAMING::REQUEST_IPL("prologue01z");
-	STREAMING::REQUEST_IPL("prologue03b");
-	STREAMING::REQUEST_IPL("prologue04b");
-	STREAMING::REQUEST_IPL("prologue05b");
-	STREAMING::REQUEST_IPL("prologue06b");
-	STREAMING::REQUEST_IPL("prologuerdb");
-	STREAMING::REQUEST_IPL("prologue_occl");
-	STREAMING::REQUEST_IPL("DES_ProTree_start");
-	STREAMING::REQUEST_IPL("DES_ProTree_start_lod");
-	STREAMING::REQUEST_IPL("prologue04_cover");
-	STREAMING::REQUEST_IPL("prologue03_grv_fun");
-	STREAMING::REMOVE_IPL("prologue03_grv_dug");
-	STREAMING::REMOVE_IPL("prologue_grv_torch");
-	STREAMING::SET_MAPDATACULLBOX_ENABLED("prologue", true);
-	STREAMING::REQUEST_MODEL(joaat("csb_prolsec"));
-	while (!STREAMING::HAS_MODEL_LOADED(joaat("csb_prolsec")))
+	unk_0xDB4E5F36ED3505EE();
+	unk_0x3C3BE9E8DD78E56B("prologue06_int");
+	unk_0x3C3BE9E8DD78E56B("prologue01");
+	unk_0x3C3BE9E8DD78E56B("prologue02");
+	unk_0x3C3BE9E8DD78E56B("prologue03");
+	unk_0x3C3BE9E8DD78E56B("prologue04");
+	unk_0x3C3BE9E8DD78E56B("prologue05");
+	unk_0x3C3BE9E8DD78E56B("prologue06");
+	unk_0x3C3BE9E8DD78E56B("prologuerd");
+	unk_0x3C3BE9E8DD78E56B("Prologue01c");
+	unk_0x3C3BE9E8DD78E56B("Prologue01d");
+	unk_0x3C3BE9E8DD78E56B("Prologue01e");
+	unk_0x3C3BE9E8DD78E56B("Prologue01f");
+	unk_0x3C3BE9E8DD78E56B("Prologue01g");
+	unk_0x3C3BE9E8DD78E56B("prologue01h");
+	unk_0x3C3BE9E8DD78E56B("prologue01i");
+	unk_0x3C3BE9E8DD78E56B("prologue01j");
+	unk_0x3C3BE9E8DD78E56B("prologue01k");
+	unk_0x3C3BE9E8DD78E56B("prologue01z");
+	unk_0x3C3BE9E8DD78E56B("prologue03b");
+	unk_0x3C3BE9E8DD78E56B("prologue04b");
+	unk_0x3C3BE9E8DD78E56B("prologue05b");
+	unk_0x3C3BE9E8DD78E56B("prologue06b");
+	unk_0x3C3BE9E8DD78E56B("prologuerdb");
+	unk_0x3C3BE9E8DD78E56B("prologue_occl");
+	unk_0x3C3BE9E8DD78E56B("DES_ProTree_start");
+	unk_0x3C3BE9E8DD78E56B("DES_ProTree_start_lod");
+	unk_0x3C3BE9E8DD78E56B("prologue04_cover");
+	unk_0x3C3BE9E8DD78E56B("prologue03_grv_fun");
+	unk_0xC6371D262CF7DC77("prologue03_grv_dug");
+	unk_0xC6371D262CF7DC77("prologue_grv_torch");
+	unk_0x2607E12BE94F5DAD("prologue", 1);
+	unk_0x78FCB2E22C41B9D5(joaat("csb_prolsec"));
+	while (!unk_0x7D167B9A0CCDA347(joaat("csb_prolsec")))
 	{
 		SYSTEM::WAIT(0);
 	}
-	PLAYER::SET_PLAYER_MODEL(PLAYER::PLAYER_ID(), joaat("csb_prolsec"));
-	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+	unk_0x6FA80FA5528888D2(unk_0x460153A63B9477BC(), joaat("csb_prolsec"));
+	if (!unk_0xA59F96B50B97E63C(unk_0x9B0761B4C3EB8BC7(), 0))
 	{
-		ENTITY::SET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 5313.8f, -5207.2f, 83.5f, true, false, false, true);
-		ENTITY::SET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID(), 169.2f);
+		unk_0x03D382CB0B44E2FC(unk_0x9B0761B4C3EB8BC7(), 5313.8f, -5207.2f, 83.5f, 1, 0, 0, 1);
+		unk_0xE922BAA80E8F9324(unk_0x9B0761B4C3EB8BC7(), 169.2f);
 	}
-	HUD::DISPLAY_RADAR(false);
-	PLAYER::SET_PLAYER_CONTROL(PLAYER::PLAYER_ID(), false, 0);
-	STREAMING::NEW_LOAD_SCENE_START_SPHERE(5312.996f, -5208.671f, 83.90526f, 10f, 0);
-	iVar0 = MISC::GET_GAME_TIMER() + 10000;
-	while (!STREAMING::IS_NEW_LOAD_SCENE_LOADED() && MISC::GET_GAME_TIMER() < iVar0)
+	unk_0x8CFF639CEFF5CF16(0);
+	unk_0xDDEDC06C88DA4E04(unk_0x460153A63B9477BC(), 0, 0);
+	unk_0xF16CDD1D05F4411A(5312.996f, -5208.671f, 83.90526f, 10f, 0);
+	iVar0 = unk_0x578C4EF320340AF7() + 10000;
+	while (!unk_0x0C7F95EB5CFEFB8B() && unk_0x578C4EF320340AF7() < iVar0)
 	{
 		SYSTEM::WAIT(0);
 	}
-	SCRIPT::SHUTDOWN_LOADING_SCREEN();
-	AUDIO::START_AUDIO_SCENE("MISSION_FAILED_SCENE");
-	CAM::DO_SCREEN_FADE_IN(2500);
-	STREAMING::NEW_LOAD_SCENE_STOP();
-	HUD::REQUEST_ADDITIONAL_TEXT("NG_INSTALL", 0);
+	unk_0xCABF0F03F83CC102();
+	unk_0x17E478571720218F("MISSION_FAILED_SCENE");
+	unk_0xFD45D90342D2A0CD(2500);
+	unk_0xF990EDED7D25FB88();
+	unk_0xBAA4D421B8B8A744("NG_INSTALL", 0);
 	while (true)
 	{
-		if (!CAM::IS_SCREEN_FADED_IN())
+		if (!unk_0x87F0CB19476706C3())
 		{
-			CAM::DO_SCREEN_FADE_IN(0);
+			unk_0xFD45D90342D2A0CD(0);
 		}
-		GRAPHICS::DRAW_RECT(0.5f, 0.5f, 1f, 1f, 0, 0, 0, 255, false);
-		GRAPHICS::DRAW_RECT(0.5f, 0.5f, 0.8f, 0.8f, 20, 20, 20, 255, false);
-		HUD::SET_TEXT_SCALE(0.5f, 0.5f);
-		HUD::SET_TEXT_CENTRE(true);
-		if (SYSTEM::TIMERA() > 10000 && HUD::HAS_ADDITIONAL_TEXT_LOADED(0))
+		unk_0x8DDE075026DB7EFD(0.5f, 0.5f, 1f, 1f, 0, 0, 0, 255, 0);
+		unk_0x8DDE075026DB7EFD(0.5f, 0.5f, 0.8f, 0.8f, 20, 20, 20, 255, 0);
+		unk_0x151E2F6EE4A34CFE(0.5f, 0.5f);
+		unk_0x9CB19F83A6C8E47F(1);
+		if (SYSTEM::TIMERA() > 10000 && unk_0xF5EE205091CE6DB2(0))
 		{
-			iLocal_0 = MISC::GET_RANDOM_INT_IN_RANGE(0, 5);
+			iLocal_0 = unk_0x344C570D6F8700DF(0, 5);
 			if ((iLocal_0 - iLocal_1) != 0)
 			{
 				iLocal_1 = iLocal_0;
@@ -108,10 +108,10 @@ void __EntryFunction__()
 					break;
 				}
 		}
-		HUD::DISABLE_FRONTEND_THIS_FRAME();
-		if (MISC::_HAS_ASYNC_INSTALL_FINISHED())
+		unk_0x7A242994FB80B8A6();
+		if (unk_0xB7877CE6CD5264C3())
 		{
-			MISC::_CLEANUP_ASYNC_INSTALL();
+			unk_0xEACDC87555AD9CE9();
 			return;
 		}
 		SYSTEM::WAIT(0);
@@ -120,7 +120,7 @@ void __EntryFunction__()
 
 void func_1(float fParam0, float fParam1, char* sParam2, int iParam3)
 {
-	HUD::BEGIN_TEXT_COMMAND_DISPLAY_TEXT(sParam2);
-	HUD::END_TEXT_COMMAND_DISPLAY_TEXT(fParam0, fParam1, iParam3);
+	unk_0x40A75E32D30C605F(sParam2);
+	unk_0xA434CC17B5517E4E(fParam0, fParam1, iParam3);
 }
 

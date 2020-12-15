@@ -1,7 +1,7 @@
 #region Local Var
-	int iLocal_0 = 0;
-	int iLocal_1 = 0;
-	int iLocal_2 = 0;
+	var uLocal_0 = 0;
+	var uLocal_1 = 0;
+	var uLocal_2 = 0;
 	struct<2> ScriptParam_0 = { 0, 0 } ;
 #endregion
 
@@ -9,50 +9,50 @@ void __EntryFunction__()
 {
 	float fVar0;
 	
-	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(19))
+	if (unk_0xED06FD5709A59F02(19))
 	{
 		func_1();
 	}
-	iLocal_0 = ScriptParam_3;
-	iLocal_1 = ScriptParam_3.f_1;
-	while (!MISC::IS_BIT_SET(iLocal_2, 1))
+	uLocal_0 = ScriptParam_3;
+	uLocal_1 = ScriptParam_3.f_1;
+	while (!unk_0xCE990E643CD9D0E5(uLocal_2, 1))
 	{
-		if (!MISC::IS_BIT_SET(iLocal_2, 0))
+		if (!unk_0xCE990E643CD9D0E5(uLocal_2, 0))
 		{
-			if (ENTITY::DOES_ENTITY_EXIST(iLocal_0))
+			if (unk_0xAE06B9E39EBDE049(uLocal_0))
 			{
-				if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_0, false))
+				if (unk_0x80FF6C016CDB0FAF(uLocal_0, 0))
 				{
-					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iLocal_0, false, true);
-					ENTITY::FREEZE_ENTITY_POSITION(iLocal_0, true);
-					ENTITY::SET_ENTITY_PROOFS(iLocal_0, true, true, true, true, true, false, false, false);
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_1))
+					unk_0x4F3C4F457D44BB0F(uLocal_0, 0, 1);
+					unk_0x6A8F948698B360B4(uLocal_0, 1);
+					unk_0x52090984B5C8A3E4(uLocal_0, 1, 1, 1, 1, 1, 0, 0, 0);
+					if (unk_0xAE06B9E39EBDE049(uLocal_1))
 					{
-						ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iLocal_1, false, true);
-						ENTITY::FREEZE_ENTITY_POSITION(iLocal_1, true);
-						ENTITY::SET_ENTITY_PROOFS(iLocal_1, true, true, true, true, true, false, false, false);
+						unk_0x4F3C4F457D44BB0F(uLocal_1, 0, 1);
+						unk_0x6A8F948698B360B4(uLocal_1, 1);
+						unk_0x52090984B5C8A3E4(uLocal_1, 1, 1, 1, 1, 1, 0, 0, 0);
 					}
-					MISC::SET_BIT(&iLocal_2, 0);
+					unk_0xBE20AB8238688965(&uLocal_2, 0);
 				}
 			}
 		}
-		else if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+		else if (!unk_0xA59F96B50B97E63C(unk_0x9B0761B4C3EB8BC7(), 0))
 		{
-			if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_0, false))
+			if (unk_0x80FF6C016CDB0FAF(uLocal_0, 0))
 			{
-				fVar0 = SYSTEM::VDIST2(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), ENTITY::GET_ENTITY_COORDS(iLocal_0, true));
+				fVar0 = SYSTEM::VDIST2(unk_0x3E4D3CCC220BDFB1(unk_0x9B0761B4C3EB8BC7(), 1), unk_0x3E4D3CCC220BDFB1(uLocal_0, 1));
 				if (fVar0 > 90000f)
 				{
-					MISC::SET_BIT(&iLocal_2, 1);
+					unk_0xBE20AB8238688965(&uLocal_2, 1);
 				}
-				else if (fVar0 > 40000f && !ENTITY::IS_ENTITY_ON_SCREEN(iLocal_0))
+				else if (fVar0 > 40000f && !unk_0xA38BFCB05DBE439D(uLocal_0))
 				{
-					MISC::SET_BIT(&iLocal_2, 1);
+					unk_0xBE20AB8238688965(&uLocal_2, 1);
 				}
 			}
 			else
 			{
-				MISC::SET_BIT(&iLocal_2, 1);
+				unk_0xBE20AB8238688965(&uLocal_2, 1);
 			}
 		}
 		SYSTEM::WAIT(0);
@@ -62,8 +62,8 @@ void __EntryFunction__()
 
 void func_1()
 {
-	ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&iLocal_0);
-	ENTITY::SET_ENTITY_AS_NO_LONGER_NEEDED(&iLocal_1);
-	SCRIPT::TERMINATE_THIS_THREAD();
+	unk_0xE730EAF558C97567(&uLocal_0);
+	unk_0x95047B5978C3543C(&uLocal_1);
+	unk_0xD39E529EBE5DB04F();
 }
 

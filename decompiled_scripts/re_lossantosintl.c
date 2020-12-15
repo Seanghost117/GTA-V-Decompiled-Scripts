@@ -48,10 +48,10 @@
 	var uLocal_46 = 0;
 	var uLocal_47 = 0;
 	var uLocal_48 = 0;
-	int iLocal_49[4] = { 0, 0, 0, 0 };
-	int iLocal_50 = 0;
-	int iLocal_51[4] = { 0, 0, 0, 0 };
-	int iLocal_52 = 0;
+	var uLocal_49[4] = { 0, 0, 0, 0 };
+	var uLocal_50 = 0;
+	var uLocal_51[4] = { 0, 0, 0, 0 };
+	var uLocal_52 = 0;
 	struct<3> Local_53[4];
 	struct<3> Local_54 = { 0, 0, 0 } ;
 	int iLocal_55 = 0;
@@ -66,15 +66,15 @@
 	float fLocal_64 = 0f;
 	int iLocal_65 = 0;
 	int iLocal_66 = 0;
-	int iLocal_67 = 0;
-	int iLocal_68 = 0;
+	var uLocal_67 = 0;
+	var uLocal_68 = 0;
 	var uLocal_69 = 0;
 	var uLocal_70 = 0;
 	var uLocal_71 = 0;
 	var uLocal_72 = 0;
 	bool bLocal_73 = 0;
 	var uLocal_74 = 0;
-	int iLocal_75 = 0;
+	var uLocal_75 = 0;
 	int iLocal_76 = 0;
 	int iLocal_77 = 0;
 #endregion
@@ -108,14 +108,14 @@ void __EntryFunction__()
 	bLocal_56 = true;
 	iLocal_62 = joaat("s_m_m_pilot_01");
 	iLocal_77 = 500;
-	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(3))
+	if (unk_0xED06FD5709A59F02(3))
 	{
 		func_12();
 	}
-	iLocal_75 = PLAYER::PLAYER_PED_ID();
+	uLocal_75 = unk_0x9B0761B4C3EB8BC7();
 	while (true)
 	{
-		if (ENTITY::IS_ENTITY_DEAD(iLocal_75, false))
+		if (unk_0xA59F96B50B97E63C(uLocal_75, 0))
 		{
 			iLocal_76 = 5;
 		}
@@ -143,7 +143,7 @@ void __EntryFunction__()
 				break;
 			
 			case 4:
-				if (Global_95672)
+				if (Global_95883)
 				{
 					iLocal_76 = 5;
 				}
@@ -166,12 +166,12 @@ void func_1()
 	iVar0 = 0;
 	while (iVar0 < 4)
 	{
-		if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[iVar0]))
+		if (unk_0xAE06B9E39EBDE049(uLocal_49[iVar0]))
 		{
-			if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[iVar0]) || (!ENTITY::IS_ENTITY_DEAD(iLocal_49[iVar0], false) && !ENTITY::IS_ENTITY_VISIBLE(iLocal_49[iVar0])))
+			if (unk_0x1D88F87079AF2FA7(uLocal_49[iVar0]) || (!unk_0xA59F96B50B97E63C(uLocal_49[iVar0], 0) && !unk_0xDC79F755CB11603C(uLocal_49[iVar0])))
 			{
-				VEHICLE::DELETE_VEHICLE(&(iLocal_49[iVar0]));
-				PED::DELETE_PED(&(iLocal_51[iVar0]));
+				unk_0x03A2522C845CFAC6(&(uLocal_49[iVar0]));
+				unk_0x586DDC617E714637(&(uLocal_51[iVar0]));
 			}
 			else
 			{
@@ -179,50 +179,50 @@ void func_1()
 				{
 					func_3(1);
 				}
-				func_2(&(iLocal_49[iVar0]), &(iLocal_51[iVar0]));
-				ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&(iLocal_49[iVar0]));
-				ENTITY::SET_PED_AS_NO_LONGER_NEEDED(&(iLocal_51[iVar0]));
+				func_2(&(uLocal_49[iVar0]), &(uLocal_51[iVar0]));
+				unk_0xE730EAF558C97567(&(uLocal_49[iVar0]));
+				unk_0x2481907DEE6B85EA(&(uLocal_51[iVar0]));
 			}
 		}
 		iVar0++;
 	}
-	if (ENTITY::DOES_ENTITY_EXIST(iLocal_50))
+	if (unk_0xAE06B9E39EBDE049(uLocal_50))
 	{
-		if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_50))
+		if (unk_0x1D88F87079AF2FA7(uLocal_50))
 		{
-			VEHICLE::DELETE_VEHICLE(&iLocal_50);
-			PED::DELETE_PED(&iLocal_52);
+			unk_0x03A2522C845CFAC6(&uLocal_50);
+			unk_0x586DDC617E714637(&uLocal_52);
 		}
 		else
 		{
-			func_2(&iLocal_50, &iLocal_52);
-			ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&iLocal_50);
-			ENTITY::SET_PED_AS_NO_LONGER_NEEDED(&iLocal_52);
+			func_2(&uLocal_50, &uLocal_52);
+			unk_0xE730EAF558C97567(&uLocal_50);
+			unk_0x2481907DEE6B85EA(&uLocal_52);
 		}
 	}
 	if (bLocal_60)
 	{
-		VEHICLE::REMOVE_VEHICLE_RECORDING(101, "AirportJetTakeOff");
-		VEHICLE::REMOVE_VEHICLE_RECORDING(102, "AirportJetTakeOff");
-		VEHICLE::REMOVE_VEHICLE_RECORDING(101, "AirportNew");
-		VEHICLE::REMOVE_VEHICLE_RECORDING(102, "AirportNew");
-		VEHICLE::REMOVE_VEHICLE_RECORDING(103, "AirplaneLandingRedux");
-		VEHICLE::REMOVE_VEHICLE_RECORDING(104, "AirplaneLandingRedux");
-		VEHICLE::REMOVE_VEHICLE_RECORDING(101, "EastWestFlight");
+		unk_0x0506FDB9D8A504E1(101, "AirportJetTakeOff");
+		unk_0x0506FDB9D8A504E1(102, "AirportJetTakeOff");
+		unk_0x0506FDB9D8A504E1(101, "AirportNew");
+		unk_0x0506FDB9D8A504E1(102, "AirportNew");
+		unk_0x0506FDB9D8A504E1(103, "AirplaneLandingRedux");
+		unk_0x0506FDB9D8A504E1(104, "AirplaneLandingRedux");
+		unk_0x0506FDB9D8A504E1(101, "EastWestFlight");
 	}
 }
 
-void func_2(int iParam0, var uParam1)
+void func_2(var uParam0, var uParam1)
 {
-	if (((ENTITY::DOES_ENTITY_EXIST(*iParam0) && ENTITY::DOES_ENTITY_EXIST(*uParam1)) && !ENTITY::IS_ENTITY_DEAD(*iParam0, false)) && !ENTITY::IS_ENTITY_DEAD(*uParam1, false))
+	if (((unk_0xAE06B9E39EBDE049(*uParam0) && unk_0xAE06B9E39EBDE049(*uParam1)) && !unk_0xA59F96B50B97E63C(*uParam0, 0)) && !unk_0xA59F96B50B97E63C(*uParam1, 0))
 	{
-		if (ENTITY::IS_ENTITY_IN_AIR(*iParam0))
+		if (unk_0xA16974805191D19C(*uParam0))
 		{
-			if (VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(*iParam0))
+			if (unk_0x3AF46A926C830E50(*uParam0))
 			{
-				if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+				if (!unk_0xA59F96B50B97E63C(unk_0x9B0761B4C3EB8BC7(), 0))
 				{
-					TASK::TASK_PLANE_MISSION(*uParam1, *iParam0, 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 30f, 1.401298E-43f, 7.006492E-44f, 1);
+					unk_0x95B4DF5308CFD8F9(*uParam1, *uParam0, 0, 0, unk_0x3E4D3CCC220BDFB1(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 30f, 100, 50, 1);
 				}
 			}
 		}
@@ -233,42 +233,42 @@ void func_3(bool bParam0)
 {
 	if (bLocal_56)
 	{
-		if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[0]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+		if (unk_0xAE06B9E39EBDE049(uLocal_49[0]) && !unk_0xA59F96B50B97E63C(uLocal_49[0], 0))
 		{
-			if (ENTITY::IS_ENTITY_IN_AIR(iLocal_49[0]))
+			if (unk_0xA16974805191D19C(uLocal_49[0]))
 			{
-				if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[0]))
+				if (!unk_0x3AF46A926C830E50(uLocal_49[0]))
 				{
-					if ((!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(iLocal_51[0], false)) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+					if ((!unk_0x5AEB5DDFFAD43CA5(unk_0x9B0761B4C3EB8BC7()) && !unk_0xA59F96B50B97E63C(uLocal_51[0], 0)) && !unk_0xA59F96B50B97E63C(uLocal_49[0], 0))
 					{
-						TASK::TASK_PLANE_MISSION(iLocal_51[0], iLocal_49[0], 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
+						unk_0x95B4DF5308CFD8F9(uLocal_51[0], uLocal_49[0], 0, 0, unk_0x3E4D3CCC220BDFB1(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 90f, 100, 50, 1);
 					}
 				}
 				else if (bParam0)
 				{
-					if ((!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(iLocal_51[0], false)) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+					if ((!unk_0x5AEB5DDFFAD43CA5(unk_0x9B0761B4C3EB8BC7()) && !unk_0xA59F96B50B97E63C(uLocal_51[0], 0)) && !unk_0xA59F96B50B97E63C(uLocal_49[0], 0))
 					{
-						TASK::TASK_PLANE_MISSION(iLocal_51[0], iLocal_49[0], 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
+						unk_0x95B4DF5308CFD8F9(uLocal_51[0], uLocal_49[0], 0, 0, unk_0x3E4D3CCC220BDFB1(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 90f, 100, 50, 1);
 					}
 				}
 			}
 		}
-		if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[2]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+		if (unk_0xAE06B9E39EBDE049(uLocal_49[2]) && !unk_0xA59F96B50B97E63C(uLocal_49[2], 0))
 		{
-			if (ENTITY::IS_ENTITY_IN_AIR(iLocal_49[2]))
+			if (unk_0xA16974805191D19C(uLocal_49[2]))
 			{
-				if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[2]))
+				if (!unk_0x3AF46A926C830E50(uLocal_49[2]))
 				{
-					if ((!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(iLocal_51[2], false)) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+					if ((!unk_0x5AEB5DDFFAD43CA5(unk_0x9B0761B4C3EB8BC7()) && !unk_0xA59F96B50B97E63C(uLocal_51[2], 0)) && !unk_0xA59F96B50B97E63C(uLocal_49[2], 0))
 					{
-						TASK::TASK_PLANE_MISSION(iLocal_51[2], iLocal_49[2], 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
+						unk_0x95B4DF5308CFD8F9(uLocal_51[2], uLocal_49[2], 0, 0, unk_0x3E4D3CCC220BDFB1(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 90f, 100, 50, 1);
 					}
 				}
 				else if (bParam0)
 				{
-					if ((!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(iLocal_51[2], false)) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+					if ((!unk_0x5AEB5DDFFAD43CA5(unk_0x9B0761B4C3EB8BC7()) && !unk_0xA59F96B50B97E63C(uLocal_51[2], 0)) && !unk_0xA59F96B50B97E63C(uLocal_49[2], 0))
 					{
-						TASK::TASK_PLANE_MISSION(iLocal_51[2], iLocal_49[2], 0, 0, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 8, 50f, -1f, 90f, 1.401298E-43f, 7.006492E-44f, 1);
+						unk_0x95B4DF5308CFD8F9(uLocal_51[2], uLocal_49[2], 0, 0, unk_0x3E4D3CCC220BDFB1(unk_0x9B0761B4C3EB8BC7(), 1), 8, 50f, -1f, 90f, 100, 50, 1);
 					}
 				}
 			}
@@ -288,9 +288,9 @@ void func_4()
 			Local_53[2 /*3*/] = { -1037.638f, -3316.12f, 23.2475f };
 			Local_53[3 /*3*/] = { 451.174f, -4009.46f, 135.1171f };
 			Local_54 = { -1612.174f, -2688.442f, 12.9444f };
-			if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
+			if (!unk_0x5AEB5DDFFAD43CA5(unk_0x9B0761B4C3EB8BC7()))
 			{
-				if ((PED::IS_PED_IN_ANY_HELI(PLAYER::PLAYER_PED_ID()) || PED::IS_PED_IN_ANY_PLANE(PLAYER::PLAYER_PED_ID())) || PLAYER::IS_PLAYER_WANTED_LEVEL_GREATER(PLAYER::PLAYER_ID(), 0))
+				if ((unk_0x94BF5C4EB0D40E9E(unk_0x9B0761B4C3EB8BC7()) || unk_0xAABDC18B9F6EC79D(unk_0x9B0761B4C3EB8BC7())) || unk_0x0F1E960B06B93848(unk_0x460153A63B9477BC(), 0))
 				{
 					bLocal_56 = false;
 				}
@@ -303,46 +303,46 @@ void func_4()
 			break;
 		
 		case 1:
-			STREAMING::REQUEST_MODEL(joaat("jet"));
-			STREAMING::REQUEST_MODEL(iLocal_62);
-			VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportJetTakeOff");
-			VEHICLE::REQUEST_VEHICLE_RECORDING(103, "AirplaneLandingRedux");
-			VEHICLE::REQUEST_VEHICLE_RECORDING(101, "EastWestFlight");
-			VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportNew");
-			VEHICLE::REQUEST_VEHICLE_RECORDING(104, "AirplaneLandingRedux");
+			unk_0x78FCB2E22C41B9D5(joaat("jet"));
+			unk_0x78FCB2E22C41B9D5(iLocal_62);
+			unk_0x766028370E52319B(101, "AirportJetTakeOff");
+			unk_0x766028370E52319B(103, "AirplaneLandingRedux");
+			unk_0x766028370E52319B(101, "EastWestFlight");
+			unk_0x766028370E52319B(101, "AirportNew");
+			unk_0x766028370E52319B(104, "AirplaneLandingRedux");
 			iLocal_66 = 2;
 			break;
 		
 		case 2:
 			if (!bLocal_60)
 			{
-				if ((((((STREAMING::HAS_MODEL_LOADED(joaat("jet")) && STREAMING::HAS_MODEL_LOADED(iLocal_62)) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportJetTakeOff")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(103, "AirplaneLandingRedux")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportNew")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(104, "AirplaneLandingRedux")) && VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "EastWestFlight"))
+				if ((((((unk_0x7D167B9A0CCDA347(joaat("jet")) && unk_0x7D167B9A0CCDA347(iLocal_62)) && unk_0x08A8988B88C144BE(101, "AirportJetTakeOff")) && unk_0x08A8988B88C144BE(103, "AirplaneLandingRedux")) && unk_0x08A8988B88C144BE(101, "AirportNew")) && unk_0x08A8988B88C144BE(104, "AirplaneLandingRedux")) && unk_0x08A8988B88C144BE(101, "EastWestFlight"))
 				{
 					bLocal_60 = true;
 				}
 				else
 				{
-					STREAMING::REQUEST_MODEL(joaat("jet"));
-					STREAMING::REQUEST_MODEL(iLocal_62);
-					VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportJetTakeOff");
-					VEHICLE::REQUEST_VEHICLE_RECORDING(102, "AirportJetTakeOff");
-					VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportNew");
-					VEHICLE::REQUEST_VEHICLE_RECORDING(102, "AirportNew");
-					VEHICLE::REQUEST_VEHICLE_RECORDING(101, "EastWestFlight");
+					unk_0x78FCB2E22C41B9D5(joaat("jet"));
+					unk_0x78FCB2E22C41B9D5(iLocal_62);
+					unk_0x766028370E52319B(101, "AirportJetTakeOff");
+					unk_0x766028370E52319B(102, "AirportJetTakeOff");
+					unk_0x766028370E52319B(101, "AirportNew");
+					unk_0x766028370E52319B(102, "AirportNew");
+					unk_0x766028370E52319B(101, "EastWestFlight");
 				}
 			}
 			if (bLocal_60)
 			{
-				if (!CAM::IS_SPHERE_VISIBLE(Local_53[0 /*3*/], 50f) && !CAM::IS_SPHERE_VISIBLE(Local_54, 50f))
+				if (!unk_0x9A70B1BD2A5BA09C(Local_53[0 /*3*/], 50f) && !unk_0x9A70B1BD2A5BA09C(Local_54, 50f))
 				{
 					iLocal_66 = 3;
 				}
 				else
 				{
-					if (CAM::IS_SPHERE_VISIBLE(Local_53[0 /*3*/], 50f))
+					if (unk_0x9A70B1BD2A5BA09C(Local_53[0 /*3*/], 50f))
 					{
 					}
-					if (CAM::IS_SPHERE_VISIBLE(Local_54, 50f))
+					if (unk_0x9A70B1BD2A5BA09C(Local_54, 50f))
 					{
 					}
 				}
@@ -350,42 +350,42 @@ void func_4()
 			break;
 		
 		case 3:
-			iLocal_49[0] = VEHICLE::CREATE_VEHICLE(joaat("jet"), Local_53[0 /*3*/], 0f, true, true, false);
-			ENTITY::SET_ENTITY_HEADING(iLocal_49[0], 240.3179f);
-			VEHICLE::_0x279D50DE5652D935(iLocal_49[0], false);
-			iLocal_49[1] = VEHICLE::CREATE_VEHICLE(joaat("jet"), Local_53[1 /*3*/], 0f, true, true, false);
-			VEHICLE::_0x279D50DE5652D935(iLocal_49[1], false);
-			iLocal_49[2] = VEHICLE::CREATE_VEHICLE(joaat("jet"), Local_53[2 /*3*/], 0f, true, true, false);
-			VEHICLE::_0x279D50DE5652D935(iLocal_49[2], false);
-			iLocal_49[3] = VEHICLE::CREATE_VEHICLE(joaat("jet"), Local_53[3 /*3*/], 0f, true, true, false);
-			VEHICLE::_0x279D50DE5652D935(iLocal_49[3], false);
+			uLocal_49[0] = unk_0xCE4780E24AFDFBF9(joaat("jet"), Local_53[0 /*3*/], 0, 1, 1, 0);
+			unk_0xE922BAA80E8F9324(uLocal_49[0], 240.3179f);
+			unk_0x6A771763B2BBF610(uLocal_49[0], 0);
+			uLocal_49[1] = unk_0xCE4780E24AFDFBF9(joaat("jet"), Local_53[1 /*3*/], 0, 1, 1, 0);
+			unk_0x6A771763B2BBF610(uLocal_49[1], 0);
+			uLocal_49[2] = unk_0xCE4780E24AFDFBF9(joaat("jet"), Local_53[2 /*3*/], 0, 1, 1, 0);
+			unk_0x6A771763B2BBF610(uLocal_49[2], 0);
+			uLocal_49[3] = unk_0xCE4780E24AFDFBF9(joaat("jet"), Local_53[3 /*3*/], 0, 1, 1, 0);
+			unk_0x6A771763B2BBF610(uLocal_49[3], 0);
 			iVar0 = 0;
 			while (iVar0 < 4)
 			{
-				if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[iVar0]))
+				if (unk_0xAE06B9E39EBDE049(uLocal_49[iVar0]))
 				{
-					iLocal_51[iVar0] = PED::CREATE_PED_INSIDE_VEHICLE(iLocal_49[iVar0], 4, iLocal_62, -1, true, true);
-					ENTITY::SET_ENTITY_LOD_DIST(iLocal_49[iVar0], 1000);
-					VEHICLE::SET_VEHICLE_ENGINE_ON(iLocal_49[iVar0], true, true, false);
-					PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_51[iVar0], true);
+					uLocal_51[iVar0] = unk_0x6A7A2C83BD302BA4(uLocal_49[iVar0], 4, iLocal_62, -1, 1, 1);
+					unk_0x1CCBC799127EA27B(uLocal_49[iVar0], 1000);
+					unk_0xC160551F55D6365A(uLocal_49[iVar0], 1, 1, 0);
+					unk_0x4E65320BC9AD521C(uLocal_51[iVar0], 1);
 				}
 				iVar0++;
 			}
-			func_8(&(iLocal_49[1]), &(iLocal_51[1]));
-			func_8(&(iLocal_49[2]), &(iLocal_51[2]));
-			func_8(&(iLocal_49[3]), &(iLocal_51[3]));
+			func_8(&(uLocal_49[1]), &(uLocal_51[1]));
+			func_8(&(uLocal_49[2]), &(uLocal_51[2]));
+			func_8(&(uLocal_49[3]), &(uLocal_51[3]));
 			if (bLocal_56)
 			{
-				if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[0]))
+				if (unk_0xAE06B9E39EBDE049(uLocal_49[0]))
 				{
-					if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportJetTakeOff"))
+					if (unk_0x08A8988B88C144BE(101, "AirportJetTakeOff"))
 					{
-						VEHICLE::START_PLAYBACK_RECORDED_VEHICLE_WITH_FLAGS(iLocal_49[0], 101, "AirportJetTakeOff", 2, 5, 786603);
+						unk_0xCF06A0B67AC86D6E(uLocal_49[0], 101, "AirportJetTakeOff", 2, 5, 786603);
 						iLocal_55 = 1;
 					}
 					else
 					{
-						VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportJetTakeOff");
+						unk_0x766028370E52319B(101, "AirportJetTakeOff");
 					}
 				}
 			}
@@ -395,13 +395,13 @@ void func_4()
 		case 4:
 			if (iLocal_59)
 			{
-				if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[3]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[3], false))
+				if (unk_0xAE06B9E39EBDE049(uLocal_49[3]) && !unk_0xA59F96B50B97E63C(uLocal_49[3], 0))
 				{
-					if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[3]))
+					if (unk_0x1D88F87079AF2FA7(uLocal_49[3]))
 					{
 						if (!iLocal_57)
 						{
-							func_8(&(iLocal_49[3]), &(iLocal_51[3]));
+							func_8(&(uLocal_49[3]), &(uLocal_51[3]));
 							iLocal_57 = 1;
 						}
 					}
@@ -416,18 +416,18 @@ void func_4()
 					{
 						if (bLocal_56)
 						{
-							if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[0]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+							if (unk_0xAE06B9E39EBDE049(uLocal_49[0]) && !unk_0xA59F96B50B97E63C(uLocal_49[0], 0))
 							{
-								if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[0]) && !CAM::IS_SPHERE_VISIBLE(Local_53[0 /*3*/], 50f))
+								if (unk_0x1D88F87079AF2FA7(uLocal_49[0]) && !unk_0x9A70B1BD2A5BA09C(Local_53[0 /*3*/], 50f))
 								{
-									if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportJetTakeOff"))
+									if (unk_0x08A8988B88C144BE(101, "AirportJetTakeOff"))
 									{
-										VEHICLE::START_PLAYBACK_RECORDED_VEHICLE_WITH_FLAGS(iLocal_49[0], 101, "AirportJetTakeOff", 2, 5, 786603);
+										unk_0xCF06A0B67AC86D6E(uLocal_49[0], 101, "AirportJetTakeOff", 2, 5, 786603);
 										iLocal_55 = 1;
 									}
 									else
 									{
-										VEHICLE::REQUEST_VEHICLE_RECORDING(101, "AirportJetTakeOff");
+										unk_0x766028370E52319B(101, "AirportJetTakeOff");
 									}
 								}
 							}
@@ -435,11 +435,11 @@ void func_4()
 					}
 					if (iLocal_55)
 					{
-						if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[0]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[0], false))
+						if (unk_0xAE06B9E39EBDE049(uLocal_49[0]) && !unk_0xA59F96B50B97E63C(uLocal_49[0], 0))
 						{
-							if (VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[0]))
+							if (unk_0x3AF46A926C830E50(uLocal_49[0]))
 							{
-								fLocal_63 = VEHICLE::GET_POSITION_IN_RECORDING(iLocal_49[0]);
+								fLocal_63 = unk_0xCC18F0D31FF84403(uLocal_49[0]);
 							}
 						}
 						if (fLocal_63 > 1100f)
@@ -450,41 +450,41 @@ void func_4()
 					break;
 				
 				case 1:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[1]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[1], false))
+					if (unk_0xAE06B9E39EBDE049(uLocal_49[1]) && !unk_0xA59F96B50B97E63C(uLocal_49[1], 0))
 					{
 						if (bLocal_56)
 						{
-							if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[1]))
+							if (unk_0x1D88F87079AF2FA7(uLocal_49[1]))
 							{
 								if (iLocal_59)
 								{
 									if (iLocal_57)
 									{
-										func_6(&(iLocal_49[1]), &(iLocal_51[1]));
-										if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(103, "AirplaneLandingRedux"))
+										func_6(&(uLocal_49[1]), &(uLocal_51[1]));
+										if (unk_0x08A8988B88C144BE(103, "AirplaneLandingRedux"))
 										{
-											VEHICLE::START_PLAYBACK_RECORDED_VEHICLE_WITH_FLAGS(iLocal_49[1], 103, "AirplaneLandingRedux", 2, 5, 786603);
+											unk_0xCF06A0B67AC86D6E(uLocal_49[1], 103, "AirplaneLandingRedux", 2, 5, 786603);
 											iLocal_58 = 0;
 											iLocal_65 = 2;
 										}
 										else
 										{
-											VEHICLE::REQUEST_VEHICLE_RECORDING(103, "AirplaneLandingRedux");
+											unk_0x766028370E52319B(103, "AirplaneLandingRedux");
 										}
 									}
 								}
 								else
 								{
-									func_6(&(iLocal_49[1]), &(iLocal_51[1]));
-									if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(103, "AirplaneLandingRedux"))
+									func_6(&(uLocal_49[1]), &(uLocal_51[1]));
+									if (unk_0x08A8988B88C144BE(103, "AirplaneLandingRedux"))
 									{
-										VEHICLE::START_PLAYBACK_RECORDED_VEHICLE_WITH_FLAGS(iLocal_49[1], 103, "AirplaneLandingRedux", 2, 5, 786603);
+										unk_0xCF06A0B67AC86D6E(uLocal_49[1], 103, "AirplaneLandingRedux", 2, 5, 786603);
 										iLocal_58 = 0;
 										iLocal_65 = 2;
 									}
 									else
 									{
-										VEHICLE::REQUEST_VEHICLE_RECORDING(103, "AirplaneLandingRedux");
+										unk_0x766028370E52319B(103, "AirplaneLandingRedux");
 									}
 								}
 							}
@@ -493,9 +493,9 @@ void func_4()
 					break;
 				
 				case 2:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[1]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[1], false))
+					if (unk_0xAE06B9E39EBDE049(uLocal_49[1]) && !unk_0xA59F96B50B97E63C(uLocal_49[1], 0))
 					{
-						if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[1]))
+						if (!unk_0x3AF46A926C830E50(uLocal_49[1]))
 						{
 							iLocal_65 = 3;
 						}
@@ -503,16 +503,16 @@ void func_4()
 					break;
 				
 				case 3:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[2]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+					if (unk_0xAE06B9E39EBDE049(uLocal_49[2]) && !unk_0xA59F96B50B97E63C(uLocal_49[2], 0))
 					{
-						if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "AirportNew"))
+						if (unk_0x08A8988B88C144BE(101, "AirportNew"))
 						{
-							if (!CAM::IS_SPHERE_VISIBLE(Local_53[2 /*3*/], 50f))
+							if (!unk_0x9A70B1BD2A5BA09C(Local_53[2 /*3*/], 50f))
 							{
-								if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[2]))
+								if (!unk_0x3AF46A926C830E50(uLocal_49[2]))
 								{
-									func_6(&(iLocal_49[2]), &(iLocal_51[2]));
-									VEHICLE::START_PLAYBACK_RECORDED_VEHICLE(iLocal_49[2], 101, "AirportNew", true);
+									func_6(&(uLocal_49[2]), &(uLocal_51[2]));
+									unk_0x43EDD5EDA578C63A(uLocal_49[2], 101, "AirportNew", 1);
 									iLocal_65 = 4;
 								}
 							}
@@ -521,36 +521,36 @@ void func_4()
 					break;
 				
 				case 4:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[2]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[2], false))
+					if (unk_0xAE06B9E39EBDE049(uLocal_49[2]) && !unk_0xA59F96B50B97E63C(uLocal_49[2], 0))
 					{
-						if (VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[2]))
+						if (unk_0x3AF46A926C830E50(uLocal_49[2]))
 						{
-							fLocal_64 = VEHICLE::GET_POSITION_IN_RECORDING(iLocal_49[2]);
+							fLocal_64 = unk_0xCC18F0D31FF84403(uLocal_49[2]);
 						}
 					}
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[1]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[1], false))
+					if (unk_0xAE06B9E39EBDE049(uLocal_49[1]) && !unk_0xA59F96B50B97E63C(uLocal_49[1], 0))
 					{
-						if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[1]))
+						if (!unk_0x3AF46A926C830E50(uLocal_49[1]))
 						{
-							if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_49[1]))
+							if (unk_0x1D88F87079AF2FA7(uLocal_49[1]))
 							{
-								func_8(&(iLocal_49[1]), &(iLocal_51[1]));
+								func_8(&(uLocal_49[1]), &(uLocal_51[1]));
 								iLocal_58 = 1;
 							}
 						}
 					}
 					if (fLocal_64 > 1100f)
 					{
-						if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[3]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[3], false))
+						if (unk_0xAE06B9E39EBDE049(uLocal_49[3]) && !unk_0xA59F96B50B97E63C(uLocal_49[3], 0))
 						{
-							if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(104, "AirplaneLandingRedux"))
+							if (unk_0x08A8988B88C144BE(104, "AirplaneLandingRedux"))
 							{
-								if (!CAM::IS_SPHERE_VISIBLE(Local_53[3 /*3*/], 50f))
+								if (!unk_0x9A70B1BD2A5BA09C(Local_53[3 /*3*/], 50f))
 								{
-									if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[3]) && iLocal_58)
+									if (!unk_0x3AF46A926C830E50(uLocal_49[3]) && iLocal_58)
 									{
-										func_6(&(iLocal_49[3]), &(iLocal_51[3]));
-										VEHICLE::START_PLAYBACK_RECORDED_VEHICLE(iLocal_49[3], 104, "AirplaneLandingRedux", true);
+										func_6(&(uLocal_49[3]), &(uLocal_51[3]));
+										unk_0x43EDD5EDA578C63A(uLocal_49[3], 104, "AirplaneLandingRedux", 1);
 										iLocal_65 = 5;
 									}
 								}
@@ -560,9 +560,9 @@ void func_4()
 					break;
 				
 				case 5:
-					if (ENTITY::DOES_ENTITY_EXIST(iLocal_49[3]) && !ENTITY::IS_ENTITY_DEAD(iLocal_49[3], false))
+					if (unk_0xAE06B9E39EBDE049(uLocal_49[3]) && !unk_0xA59F96B50B97E63C(uLocal_49[3], 0))
 					{
-						if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_49[3]))
+						if (!unk_0x3AF46A926C830E50(uLocal_49[3]))
 						{
 							func_5();
 							iLocal_65 = 0;
@@ -584,10 +584,10 @@ void func_5()
 
 void func_6(var uParam0, var uParam1)
 {
-	ENTITY::SET_ENTITY_VISIBLE(*uParam0, true, false);
-	ENTITY::SET_ENTITY_VISIBLE(*uParam1, true, false);
-	ENTITY::SET_ENTITY_COLLISION(*uParam0, true, false);
-	ENTITY::FREEZE_ENTITY_POSITION(*uParam0, false);
+	unk_0x80250B8368A4E611(*uParam0, 1, 0);
+	unk_0x80250B8368A4E611(*uParam1, 1, 0);
+	unk_0x58ADF88C51AAFDC5(*uParam0, 1, 0);
+	unk_0x6A8F948698B360B4(*uParam0, 0);
 }
 
 void func_7()
@@ -597,26 +597,26 @@ void func_7()
 	switch (iLocal_61)
 	{
 		case 0:
-			if (!ENTITY::DOES_ENTITY_EXIST(iLocal_50))
+			if (!unk_0xAE06B9E39EBDE049(uLocal_50))
 			{
-				iLocal_50 = VEHICLE::CREATE_VEHICLE(joaat("jet"), -65.3177f, 15.4603f, 703.106f, 0f, true, true, false);
-				ENTITY::SET_ENTITY_LOD_DIST(iLocal_50, 1000);
-				VEHICLE::SET_VEHICLE_ENGINE_ON(iLocal_50, true, true, false);
-				VEHICLE::_0x279D50DE5652D935(iLocal_50, false);
-				iLocal_52 = PED::CREATE_PED_INSIDE_VEHICLE(iLocal_50, 4, iLocal_62, -1, true, true);
-				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_52, true);
+				uLocal_50 = unk_0xCE4780E24AFDFBF9(joaat("jet"), -65.3177f, 15.4603f, 703.106f, 0, 1, 1, 0);
+				unk_0x1CCBC799127EA27B(uLocal_50, 1000);
+				unk_0xC160551F55D6365A(uLocal_50, 1, 1, 0);
+				unk_0x6A771763B2BBF610(uLocal_50, 0);
+				uLocal_52 = unk_0x6A7A2C83BD302BA4(uLocal_50, 4, iLocal_62, -1, 1, 1);
+				unk_0x4E65320BC9AD521C(uLocal_52, 1);
 				iLocal_61 = 1;
 			}
 			break;
 		
 		case 1:
-			if (ENTITY::DOES_ENTITY_EXIST(iLocal_50) && !ENTITY::IS_ENTITY_DEAD(iLocal_50, false))
+			if (unk_0xAE06B9E39EBDE049(uLocal_50) && !unk_0xA59F96B50B97E63C(uLocal_50, 0))
 			{
-				if (VEHICLE::HAS_VEHICLE_RECORDING_BEEN_LOADED(101, "EastWestFlight"))
+				if (unk_0x08A8988B88C144BE(101, "EastWestFlight"))
 				{
-					if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_50))
+					if (!unk_0x3AF46A926C830E50(uLocal_50))
 					{
-						VEHICLE::START_PLAYBACK_RECORDED_VEHICLE_WITH_FLAGS(iLocal_50, 101, "EastWestFlight", 2, 5, 786603);
+						unk_0xCF06A0B67AC86D6E(uLocal_50, 101, "EastWestFlight", 2, 5, 786603);
 						iLocal_61 = 2;
 					}
 				}
@@ -624,15 +624,15 @@ void func_7()
 			break;
 		
 		case 2:
-			if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), false))
+			if (!unk_0xA59F96B50B97E63C(unk_0x9B0761B4C3EB8BC7(), 0))
 			{
-				Var0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
+				Var0 = { unk_0x3E4D3CCC220BDFB1(unk_0x9B0761B4C3EB8BC7(), 1) };
 			}
-			if (ENTITY::DOES_ENTITY_EXIST(iLocal_50) && !ENTITY::IS_ENTITY_DEAD(iLocal_50, false))
+			if (unk_0xAE06B9E39EBDE049(uLocal_50) && !unk_0xA59F96B50B97E63C(uLocal_50, 0))
 			{
-				if (!VEHICLE::IS_PLAYBACK_GOING_ON_FOR_VEHICLE(iLocal_50))
+				if (!unk_0x3AF46A926C830E50(uLocal_50))
 				{
-					if ((ENTITY::IS_ENTITY_OCCLUDED(iLocal_50) && !CAM::IS_SPHERE_VISIBLE(-1602.086f, -2674.039f, 12.9444f, 50f)) && SYSTEM::VDIST2(Var0, ENTITY::GET_ENTITY_COORDS(iLocal_50, true)) > 62500f)
+					if ((unk_0x1D88F87079AF2FA7(uLocal_50) && !unk_0x9A70B1BD2A5BA09C(-1602.086f, -2674.039f, 12.9444f, 50f)) && SYSTEM::VDIST2(Var0, unk_0x3E4D3CCC220BDFB1(uLocal_50, 1)) > 62500f)
 					{
 						iLocal_61 = 1;
 					}
@@ -644,10 +644,10 @@ void func_7()
 
 void func_8(var uParam0, var uParam1)
 {
-	ENTITY::SET_ENTITY_VISIBLE(*uParam0, false, false);
-	ENTITY::SET_ENTITY_VISIBLE(*uParam1, false, false);
-	ENTITY::SET_ENTITY_COLLISION(*uParam0, false, false);
-	ENTITY::FREEZE_ENTITY_POSITION(*uParam0, true);
+	unk_0x80250B8368A4E611(*uParam0, 0, 0);
+	unk_0x80250B8368A4E611(*uParam1, 0, 0);
+	unk_0x58ADF88C51AAFDC5(*uParam0, 0, 0);
+	unk_0x6A8F948698B360B4(*uParam0, 1);
 }
 
 void func_9()
@@ -667,7 +667,7 @@ void func_12()
 {
 	func_1();
 	func_13();
-	SCRIPT::TERMINATE_THIS_THREAD();
+	unk_0xD39E529EBE5DB04F();
 }
 
 void func_13()
@@ -675,28 +675,28 @@ void func_13()
 	struct<3> Var0;
 	struct<3> Var1;
 	struct<3> Var2;
-	float fVar3;
+	var uVar3;
 	
-	if (ENTITY::DOES_ENTITY_EXIST(iLocal_67))
+	if (unk_0xAE06B9E39EBDE049(uLocal_67))
 	{
-		if (ENTITY::IS_ENTITY_OCCLUDED(iLocal_67))
+		if (unk_0x1D88F87079AF2FA7(uLocal_67))
 		{
-			VEHICLE::DELETE_VEHICLE(&iLocal_67);
+			unk_0x03A2522C845CFAC6(&uLocal_67);
 		}
-		else if (!ENTITY::IS_ENTITY_DEAD(iLocal_67, false) && !PED::IS_PED_INJURED(iLocal_68))
+		else if (!unk_0xA59F96B50B97E63C(uLocal_67, 0) && !unk_0x5AEB5DDFFAD43CA5(uLocal_68))
 		{
-			VEHICLE::STOP_PLAYBACK_RECORDED_VEHICLE(iLocal_67);
-			PED::SET_PED_KEEP_TASK(iLocal_68, true);
-			Var0 = { ENTITY::GET_ENTITY_COORDS(iLocal_67, true) };
-			fVar3 = ENTITY::GET_ENTITY_HEADING(iLocal_67);
+			unk_0xD90A910C8C028796(uLocal_67);
+			unk_0xCBA6B2B569DCAFD8(uLocal_68, 1);
+			Var0 = { unk_0x3E4D3CCC220BDFB1(uLocal_67, 1) };
+			uVar3 = unk_0xEF7858F25585F853(uLocal_67);
 			Var1 = { 0f, 500f, 50f };
-			Var2 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(Var0, fVar3, Var1) };
-			TASK::TASK_HELI_MISSION(iLocal_68, iLocal_67, 0, 0, Var2, 4, 50f, -1f, 0f, 100, 50, -1082130432, 0);
+			Var2 = { unk_0x1BAE5C94E38E44FE(Var0, uVar3, Var1) };
+			unk_0x978007212AAC392F(uLocal_68, uLocal_67, 0, 0, Var2, 4, 50f, -1f, 0f, 100, 50, -1082130432, 0);
 		}
 	}
 	if (bLocal_73)
 	{
-		VEHICLE::REMOVE_VEHICLE_RECORDING(102, "HelicopterTakeOff");
+		unk_0x0506FDB9D8A504E1(102, "HelicopterTakeOff");
 	}
 }
 

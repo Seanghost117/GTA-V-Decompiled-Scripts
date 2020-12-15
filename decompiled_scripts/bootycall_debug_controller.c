@@ -1,5 +1,5 @@
 void __EntryFunction__()
 {
-	SCRIPT::TERMINATE_THIS_THREAD();
+	unk_0xD39E529EBE5DB04F();
 }
 
